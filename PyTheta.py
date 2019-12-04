@@ -20,6 +20,7 @@
 # "object oriented" version of camera-summary.py
 
 # pylint: disable=C0111
+# ↑プログラムの説明ドキュメントがないよ！というエラーの防止
 
 
 from __future__ import print_function
@@ -83,7 +84,7 @@ def theta_con_init():
 
 def start_capture(theta_list):
 	for addr in theta_list:
-		# print('debug[{:s}]'.format(addr) )
+		# print('debug[{}]'.format(addr) )
 		sp.check_output(
 			"gphoto2 --set-config movie=1 --port={}".format(addr),
 			shell=True
@@ -91,6 +92,7 @@ def start_capture(theta_list):
 
 def finish_capture(theta_list):
 	for addr in theta_list:
+		# print('debug[{}]'.format( port_ptpcam(addr) ) )
 		sp.check_output(
 			"ptpcam -R 0x1018,0xFFFFFFFF {}".format( port_ptpcam(addr) ),
 			shell=True

@@ -2,17 +2,11 @@
 # -*- coding: utf-8 -*-
 
 # pylint: disable=C0111
-
+# ↑プログラムの説明ドキュメントがないよ！というエラーの防止
 import PyTheta
 
-"""hoge = PyTheta.ThetaConInit()
-print("実行結果{},type={}".format( hoge,type(hoge) ) )
+t_list = PyTheta.theta_con_init()
+print("実行結果{},type={}".format( t_list,type(t_list) ) )
 
-
-
-PyTheta.start_capture(hoge)
-PyTheta.finish_capture(hoge)"""
-
-
-huga=["usb:003,033","usb:005,027","usb:001,029"]
-PyTheta.finish_capture(huga)
+PyTheta.start_capture(t_list)
+PyTheta.finish_capture(t_list)
