@@ -98,6 +98,35 @@ def finish_capture(theta_list):
 			shell=True
 		)
 
+def get_serial(theta_list):
+	for addr in theta_list:
+		print('[{}]'.format(addr) )
+		sp.check_call(
+			"gphoto2 --get-config=serialnumber --port={}".format(addr),
+			shell=True
+		)
+		print("")
+
+def get_bat_lv(theta_list):
+	for addr in theta_list:
+		print('[{}]'.format(addr) )
+		sp.check_call(
+			"gphoto2 --get-config=batterylevel --port={}".format(addr),
+			shell=True
+		)
+		print("")
+
+def hoge(theta_list):
+	for addr in theta_list:
+		print('[{}]'.format(addr) )
+		sp.check_call(
+			"gphoto2 --get-config=d80d --port={}".format(addr),
+			shell=True
+		)
+		print("")
+
+
+
 
 if __name__ == "__main__":
 	sys.exit(theta_con_init())
