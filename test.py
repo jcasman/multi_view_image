@@ -5,7 +5,7 @@
 # ↑プログラムの説明ドキュメントがないよ！というエラーの防止
 import PyTheta
 
-t_list = PyTheta.theta_con_init()
+t_list = PyTheta.connect_init()
 print("実行結果{},type={}".format( t_list,type(t_list) ) )
 
 PyTheta.start_capture(t_list)
