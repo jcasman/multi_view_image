@@ -15,6 +15,7 @@ import urllib as url #py3ならば、import urllib.parse as url である。
 import os
 # import glob #アンマウント先が存在しているかの判定に使用していた。
 import re # バスデバイス文字列を分割するため使用
+import threading
 import gphoto2 as gp
 
 
@@ -75,13 +76,16 @@ def connect_init():
 	return theta_list
 
 
+def inner_start_capture(addr):
+	# print('debug[{}]'.format(addr) )
+	sp.check_output(
+		"gphoto2 --set-config movie=1 --port={}".format(addr),
+		shell=True
+	)
 def start_capture(theta_list):
 	for addr in theta_list:
-		# print('debug[{}]'.format(addr) )
-		sp.check_output(
-			"gphoto2 --set-config movie=1 --port={}".format(addr),
-			shell=True
-		)
+		thread = threading.Thread(name=addr, target=inner_start_capture, args=(addr,))
+		thread.start()
 
 def finish_capture(theta_list):
 	for addr in theta_list:
