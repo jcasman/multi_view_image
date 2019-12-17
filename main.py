@@ -9,7 +9,7 @@ import pytheta
 t_list = pytheta.connect_init()
 #print("実行結果{},type={}".format( t_list,type(t_list) ) )
 
-time.sleep(5)
+#time.sleep(5)
 pytheta.start_capture(t_list)
 
 time.sleep(5)

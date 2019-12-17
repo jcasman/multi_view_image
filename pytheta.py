@@ -92,13 +92,12 @@ def start_capture(theta_list):
 		thread.start()
 
 
-def inner_finish_capture(theta_list):
-	for addr in theta_list:
-		# print('debug[{}]'.format( port_ptpcam(addr) ) )
-		sp.check_output(
-			"ptpcam -R 0x1018,0xFFFFFFFF {}".format( port_ptpcam(addr) ),
-			shell=True
-		)
+def inner_finish_capture(addr):
+	# print('debug[{}]'.format( port_ptpcam(addr) ) )
+	sp.check_output(
+		"ptpcam -R 0x1018,0xFFFFFFFF {}".format( port_ptpcam(addr) ),
+		shell=True
+	)
 
 def finish_capture(theta_list):
 	for addr in theta_list:
