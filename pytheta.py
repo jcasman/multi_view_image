@@ -83,9 +83,13 @@ def inner_start_capture(addr):
 		shell=True
 	)
 def start_capture(theta_list):
+	threads = []
 	for addr in theta_list:
-		thread = threading.Thread(name=addr, target=inner_start_capture, args=(addr,))
-		thread.start()
+		threads.append(
+			threading.Thread(name=addr, target=inner_start_capture, args=(addr,) )
+		)
+	for i in threads:
+		i.start()
 
 def finish_capture(theta_list):
 	for addr in theta_list:
