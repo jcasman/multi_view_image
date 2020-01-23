@@ -118,13 +118,15 @@ def get_serial(theta_list):
 		print("")
 
 def get_bat_lv(theta_list):
+	result_list = []
 	for addr in theta_list:
-		print('[{}]'.format(addr) )
-		sp.check_call(
+		result = sp.check_output(
 			"gphoto2 --get-config=batterylevel --port={}".format(addr),
 			shell=True
 		)
-		print("")
+		result = result.rsplit(" ",1)[1]
+		result_list.append( int( result.rstrip("%\n") ) )
+	return result_list
 
 def check_rem_time_v(theta_list):
 	for addr in theta_list:
