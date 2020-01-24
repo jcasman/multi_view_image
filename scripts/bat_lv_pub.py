@@ -9,17 +9,22 @@ from std_msgs.msg import Int32MultiArray
 
 import pytheta
 
-rospy.init_node('bat_lv_pub')
-pub = rospy.Publisher('bat_lv', Int32MultiArray, queue_size=1)
-rate = rospy.Rate(0.5)
+def bat_lv_pub():
+	rospy.init_node('bat_lv_pub')
+	pub = rospy.Publisher('bat_lv', Int32MultiArray, queue_size=1)
+	rate = rospy.Rate(0.5)
 
-t_list = pytheta.connect_init()
-print("実行結果{},type={}".format( t_list,type(t_list) ) )
+	t_list = pytheta.connect_init()
+	while not rospy.is_shutdown():
+		data = Int32MultiArray(data = pytheta.get_bat_lv(t_list) ) 
+		rospy.loginfo(data)
+		pub.publish(data)
+		rate.sleep()
 
-while not rospy.is_shutdown():
-	pub.publish(
-		Int32MultiArray(data = pytheta.get_bat_lv(t_list) ) 
-	)
-	rate.sleep()
+	rospy.loginfo("bat_lv_pub is end")
 
-print("\nend")
+if __name__ == '__main__':
+	try:
+		bat_lv_pub()
+	except rospy.ROSInterruptException: 
+		pass
