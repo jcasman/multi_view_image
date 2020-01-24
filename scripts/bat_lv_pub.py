@@ -9,7 +9,7 @@ from std_msgs.msg import Int32MultiArray
 
 import pytheta
 
-rospy.init_node('bat')
+rospy.init_node('bat_lv_pub')
 pub = rospy.Publisher('bat_lv', Int32MultiArray, queue_size=1)
 rate = rospy.Rate(0.5)
 
