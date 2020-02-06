@@ -76,6 +76,7 @@ def connect_init():
 	return theta_list
 
 
+
 def inner_start_capture(addr):
 	# print('debug[{}]'.format(addr) )
 	sp.check_output(
@@ -116,6 +117,7 @@ def finish_capture(theta_list):
 		)
 	for i in threads:
 		i.start()
+
 
 
 
