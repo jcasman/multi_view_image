@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # pylint: disable=C0111
-# ↑プログラムの説明ドキュメントがないよ！というエラーの防止
+# ↑プログラムの説明ドキュメントがないよ!というエラーの防止
 
 
 from __future__ import print_function
@@ -76,6 +76,7 @@ def connect_init():
 	return theta_list
 
 
+
 def inner_start_capture(addr):
 	# print('debug[{}]'.format(addr) )
 	sp.check_output(
@@ -85,6 +86,7 @@ def inner_start_capture(addr):
 def start_capture(theta_list):
 	threads = []
 	for addr in theta_list:
+
 		threads.append(
 			threading.Thread(name=addr, target=inner_start_capture, args=(addr,) )
 		)
@@ -101,11 +103,14 @@ def inner_finish_capture(addr):
 def finish_capture(theta_list):
 	threads = []
 	for addr in theta_list:
+
 		threads.append(
 			threading.Thread(name=addr, target=inner_finish_capture, args=(addr,) )
 		)
 	for i in threads:
 		i.start()
+
+
 
 
 def get_serial(theta_list):
