@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # pylint: disable=C0111
-# ↑プログラムの説明ドキュメントがないよ！というエラーの防止
+# ↑プログラムの説明ドキュメントがないよ!というエラーの防止
 
 
 from __future__ import print_function
@@ -100,14 +100,6 @@ def inner_finish_capture(addr):
 		shell=True
 	)
 
-
-def inner_finish_capture(addr):
-	# print('debug[{}]'.format( port_ptpcam(addr) ) )
-	sp.check_output(
-		"ptpcam -R 0x1018,0xFFFFFFFF {}".format( port_ptpcam(addr) ),
-		shell=True
-	)
-
 def finish_capture(theta_list):
 	threads = []
 	for addr in theta_list:
@@ -131,13 +123,15 @@ def get_serial(theta_list):
 		print("")
 
 def get_bat_lv(theta_list):
+	result_list = []
 	for addr in theta_list:
-		print('[{}]'.format(addr) )
-		sp.check_call(
+		result = sp.check_output(
 			"gphoto2 --get-config=batterylevel --port={}".format(addr),
 			shell=True
 		)
-		print("")
+		result = result.rsplit(" ",1)[1]
+		result_list.append( int( result.rstrip("%\n") ) )
+	return result_list
 
 def check_rem_time_v(theta_list):
 	for addr in theta_list:
