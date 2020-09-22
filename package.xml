@@ -53,6 +53,16 @@
   <build_export_depend>rospy</build_export_depend>
   <exec_depend>rospy</exec_depend>
 
+  <!-- gPhoto2 -->
+  <exec_depend>gPhoto2<exec_depend>
+
+  <!-- Python gPhoto2 のインストールに必要 -->
+  <build_depend>libgphoto2-dev</build_depend>
+
+  <!-- ptpcam -->
+  <build_depend>ptpcam</build_depend>
+  <exec_depend>ptpcam</exec_depend>
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

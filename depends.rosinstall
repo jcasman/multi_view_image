@@ -1,0 +1,4 @@
+- svn: 
+    local-name: some/local/path
+    uri: some/uri
+    version: 1.2.0
