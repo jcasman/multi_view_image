@@ -77,7 +77,7 @@ def connect_init():
 	if not camera_list:
 		print('MTPデバイスが何もありません')
 		return 1
-	camera_list.sort(key=lambda x: x[0])
+	camera_list = sorted(camera_list)
 
 	theta_list = check_if_theta(camera_list)
 	unmount_theta(theta_list)
