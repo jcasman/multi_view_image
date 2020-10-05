@@ -4,32 +4,23 @@
 # pylint: disable=C0111
 # ↑プログラムの説明ドキュメントがないよ!というエラーの防止
 
+# pylint: disable=C0321
+# 改行したほうがいいよ！という推奨を無視
+
 from __future__ import print_function
 
 import logging
-
-
 import sys
-
-
-
 import subprocess as sp
-
 import os
 # import glob #アンマウント先が存在しているかの判定に使用していた。
 import re # バスデバイス文字列を分割するため使用
 import threading
-
 import six
 import gphoto2 as gp
-if six.PY2:
-	import urllib as url
 
-else:
-	import urllib.parse as url
-
-
-
+if six.PY2: import urllib as url
+else:       import urllib.parse as url
 
 
 def port_ptpcam(addr):
