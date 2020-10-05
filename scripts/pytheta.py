@@ -42,17 +42,29 @@ def unmount_theta(theta_list):
 			print("[{:s}]はアンマウント済みです".format(path))
 
 def check_if_theta(camera_list):
+	"""
+	lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。
+	gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。
+	"""
+	print("[debug] check_if_theta 処理開始")
 	theta_list = []
 	for index, (name, addr) in enumerate(camera_list):
 		print('[debug] [{:d}]:[{:s}] [{:s}]'.format(index, addr, name))
 
-		if name == "USB PTP Class Camera":	# このままではシータであるかの判定が甘い。今後改善
-			# print("[debug]シータです")
+		dev = addr.rsplit(',', 1)[1]
+		cmd = "lsusb -vd 05ca: -s " + dev + "|grep iProduct"
+		res = repr(sp.Popen(cmd, stdout=sp.PIPE, shell=True).communicate()[0]).decode('utf-8')
+
+		print('[debug] [{}]'.format(res))
+		if re.match(".*RICOH THETA.*",res):
+			print("[debug]シータです")
 			theta_list.append(addr)
 
 		else:
-			# print("[debug]シータではないです")
+			print("[debug]シータではないです")
 			pass
+
+	print("[debug] check_if_thetaは正常終了")
 	return theta_list
 
 
