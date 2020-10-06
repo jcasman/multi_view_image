@@ -7,6 +7,9 @@
 # pylint: disable=C0321
 # 改行したほうがいいよ！という推奨を無視
 
+# Trailing whitespace
+# pylint: disable=C0303
+
 from __future__ import print_function
 
 import logging
@@ -33,9 +36,6 @@ class no_xtp_dev(Exception):
 	"""
 	xTPデバイスが何もないことを示すエラー
 	"""
-	def __init__(self):
-		pass
-
 	def __str__(self):
 		return "xTPデバイスが何もありません"
 
@@ -89,7 +89,7 @@ def check_if_theta(xtp_dev_list):
 
 		else:
 			print("[debug]シータではないです")
-			pass
+			#pass
 
 	print("[debug] check_if_thetaは正常終了")
 	return theta_list
