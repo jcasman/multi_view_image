@@ -29,26 +29,53 @@ def port_ptpcam(addr):
 	#print('debug [{}] [{}]'.format(bus,dev) )
 	return "--bus={} --dev={}".format(bus, dev)
 
-def unmount_theta(theta_list):
-	for addr in theta_list:
-		# if( glob.glob('/run/user/1000/gvfs/gphoto2:host=*') ):
-		path = "/run/user/1000/gvfs/gphoto2:host=%5B"+url.quote(addr)+"%5D"
-		if os.path.exists(path):
-			print("[{:s}]をアンマウントします".format(path) )
-			sp.check_output(["gvfs-mount", "-u", path])
-			# cmd = "gvfs-mount -u /run/user/1000/gvfs/mtp:host=%5B"+url.quote(addr)+"%5D"
-			# sp.check_output(cmd,shell=True) #こういう書き方もある。
-		else:
-			print("[{:s}]はアンマウント済みです".format(path))
+class no_xtp_dev(Exception):
+	"""
+	xTPデバイスが何もないことを示すエラー
+	"""
+	def __init__(self):
+		pass
 
-def check_if_theta(camera_list):
+	def __str__(self):
+		return "xTPデバイスが何もありません"
+
+def get_xtp_dev_list():
 	"""
-	lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。
+	接続されているxTPデバイスのリストを作成する。  
+	xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
+
+
+	Returns
+	-------
+	xtp_dev_lis : list
+		接続されているxTPデバイスのリスト
+	"""	
+	xtp_dev_list = []
+	for name, addr in gp.check_result(gp.gp_camera_autodetect() ):
+		xtp_dev_list.append((name, addr))
+	if not xtp_dev_list:
+		raise no_xtp_dev()
+	return sorted(xtp_dev_list)
+
+def check_if_theta(xtp_dev_list):
+	"""
+	lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。  
 	gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。
+
+	Parameters
+	----------
+	xtp_dev_lis : list
+		接続されているxTPデバイスのリスト
+
+	Returns
+	-------
+	theta_list : list
+		接続されているThetaのリスト
 	"""
+
 	print("[debug] check_if_theta 処理開始")
 	theta_list = []
-	for index, (name, addr) in enumerate(camera_list):
+	for index, (name, addr) in enumerate(xtp_dev_list):
 		print('[debug] [{:d}]:[{:s}] [{:s}]'.format(index, addr, name))
 
 		dev = addr.rsplit(',', 1)[1]
@@ -67,6 +94,26 @@ def check_if_theta(camera_list):
 	print("[debug] check_if_thetaは正常終了")
 	return theta_list
 
+def unmount_theta(theta_list):
+	"""	
+	マウントされているThetaをアンマウントする。  
+	そもそもマウントしないようにすれば良いかもしれないが、  
+	他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。
+
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
+	"""	
+	for addr in theta_list:
+		path = "/run/user/1000/gvfs/gphoto2:host=%5B"+url.quote(addr)+"%5D"
+		if os.path.exists(path):
+			print("[{:s}]をアンマウントします".format(path) )
+			sp.check_output(["gvfs-mount", "-u", path])
+			# cmd = "gvfs-mount -u /run/user/1000/gvfs/mtp:host=%5B"+url.quote(addr)+"%5D"
+			# sp.check_output(cmd,shell=True) #こういう書き方もある。
+		else:
+			print("[{:s}]はアンマウント済みです".format(path))
 
 def connect_init():
 	logging.basicConfig(
@@ -74,15 +121,9 @@ def connect_init():
 	)
 	callback_obj = gp.check_result(gp.use_python_logging() )
 
-	camera_list = []
-	for name, addr in gp.check_result(gp.gp_camera_autodetect() ):
-		camera_list.append((name, addr))
-	if not camera_list:
-		print('MTPデバイスが何もありません')
-		return 1
-	camera_list = sorted(camera_list)
 
-	theta_list = check_if_theta(camera_list)
+	xtp_dev_list = get_xtp_dev_list()
+	theta_list = check_if_theta(xtp_dev_list)
 	unmount_theta(theta_list)
 
 	"""
@@ -167,6 +208,10 @@ def check_rem_time_v(theta_list):
 
 
 
+def _unittest():
+	theta_list = connect_init()
+
+
 
 if __name__ == "__main__":
-	sys.exit(connect_init())
+	sys.exit(_unittest())
