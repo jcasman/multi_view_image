@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。
+ライセンスはGPL3
+"""
 # pylint: disable=C0111
 # ↑プログラムの説明ドキュメントがないよ!というエラーの防止
 
@@ -16,6 +20,7 @@ import logging
 import sys
 import subprocess as sp
 import os
+import time
 # import glob #アンマウント先が存在しているかの判定に使用していた。
 import re # バスデバイス文字列を分割するため使用
 import threading
@@ -26,11 +31,25 @@ if six.PY2: import urllib as url
 else:       import urllib.parse as url
 
 
-def port_ptpcam(addr):
-	#print('debug [{:s}]'.format(addr) )
-	bus, dev = re.split('[:,]', addr)[1:]
-	#print('debug [{}] [{}]'.format(bus,dev) )
-	return "--bus={} --dev={}".format(bus, dev)
+# Properties (milliseconds)
+TIMEOUT = 10
+
+
+def wait_for_event(camera, timeout=TIMEOUT, event_type=gp.GP_EVENT_TIMEOUT):
+	"""
+	Wait for event_type to to be triggered.
+	:param camera:
+	:param timeout:
+	:param event_type:
+	:return: event_data
+	"""
+	while True:
+		_event_type, event_data = camera.wait_for_event(timeout)
+		if _event_type == gp.GP_EVENT_TIMEOUT:
+			return
+		if _event_type == event_type:
+			return event_data
+
 
 class no_xtp_dev(Exception):
 	"""
@@ -38,6 +57,7 @@ class no_xtp_dev(Exception):
 	"""
 	def __str__(self):
 		return "xTPデバイスが何もありません"
+
 
 def get_xtp_dev_list():
 	"""
@@ -49,13 +69,14 @@ def get_xtp_dev_list():
 	-------
 	xtp_dev_lis : list
 		接続されているxTPデバイスのリスト
-	"""	
+	"""
 	xtp_dev_list = []
 	for name, addr in gp.check_result(gp.gp_camera_autodetect() ):
 		xtp_dev_list.append((name, addr))
 	if not xtp_dev_list:
 		raise no_xtp_dev()
 	return sorted(xtp_dev_list)
+
 
 def check_if_theta(xtp_dev_list):
 	"""
@@ -94,6 +115,7 @@ def check_if_theta(xtp_dev_list):
 	print("[debug] check_if_thetaは正常終了")
 	return theta_list
 
+
 def unmount_theta(theta_list):
 	"""	
 	マウントされているThetaをアンマウントする。  
@@ -104,7 +126,7 @@ def unmount_theta(theta_list):
 	----------
 	theta_list : list
 		接続されているThetaのリスト
-	"""	
+	"""
 	for addr in theta_list:
 		path = "/run/user/1000/gvfs/gphoto2:host=%5B"+url.quote(addr)+"%5D"
 		if os.path.exists(path):
@@ -115,7 +137,12 @@ def unmount_theta(theta_list):
 		else:
 			print("[{:s}]はアンマウント済みです".format(path))
 
+
 def connect_init():
+	"""
+	接続に際して一斉に行う項目をまとめた関数
+	"""
+	
 	logging.basicConfig(
 		format='%(levelname)s: %(name)s: %(message)s', level=logging.WARNING
 	)
@@ -133,41 +160,75 @@ def connect_init():
 	return theta_list
 
 
+def camera_control_util(addr):
+	"""
+	Python-gPhoto2によって諸ステータスを取得する際に
+	重複する部分をまるっとまとめたユーティリティ。
+	"""
+
+	camera = gp.Camera()
+
+	# カメラのポート名でポートを検索(?)
+	port_info_list = gp.PortInfoList()
+	port_info_list.load()
+
+	idx = port_info_list.lookup_path(addr)
+	camera.set_port_info(port_info_list[idx])
+	camera.init()
+
+	try:
+		camera_config = camera.get_config()
+	except gp.GPhoto2Error:
+		# 念の為例外を立てる処理はそのまま。意味があるかは不明
+		raise RuntimeError("Unable to connect to Camera")
+	camera.set_config(camera_config)
+
+	return camera, camera_config
+
 
 def inner_start_capture(addr):
+	"""
+	撮影開始処理を担う実処理部分
+	"""
 	# print('debug[{}]'.format(addr) )
-	sp.check_output(
-		"gphoto2 --set-config movie=1 --port={}".format(addr),
-		shell=True
-	)
+	camera, camera_config = camera_control_util(addr)
+	actions_config = camera_config.get_child_by_name('actions')
+	movie = actions_config.get_child_by_name("movie")
+	movie.set_value(1)
+	camera.set_config(camera_config)
+	#wait_for_event(camera)
+	camera.exit()
+
+
 def start_capture(theta_list):
+	"""
+	本体関数inner_start_captureをマルチスレッドで実行するための関数
+	"""
 	threads = []
 	for addr in theta_list:
-
 		threads.append(
 			threading.Thread(name=addr, target=inner_start_capture, args=(addr,) )
 		)
 	for i in threads:
 		i.start()
 
+
 def inner_finish_capture(addr):
 	"""
-		二回繰り返すのはThetaSにおける誤動作防止。
-		根本的解決の見込みは今のところなし。
+	撮影終了処理を担う実処理部分
+	現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用
 	"""
 	# print('debug[{}]'.format(addr) )
-	sp.check_output(
-		"ptpcam -R 0x1018,0xFFFFFFFF {}".format( port_ptpcam(addr) ),
-		shell=True
-	)
-	sp.check_output(
-		"ptpcam -R 0x1018,0xFFFFFFFF {}".format( port_ptpcam(addr) ),
-		shell=True
-	)
+	cmd = "gphoto2 --set-config=/main/actions/opcode=0x1018,0xFFFFFFFF --port={}".format( addr )
+	sp.check_output(cmd, shell=True)
+
+
 def finish_capture(theta_list):
+	"""
+	本体関数inner_finish_captureをマルチスレッドで実行するための関数
+	"""
 	threads = []
 	for addr in theta_list:
-
 		threads.append(
 			threading.Thread(name=addr, target=inner_finish_capture, args=(addr,) )
 		)
@@ -175,43 +236,64 @@ def finish_capture(theta_list):
 		i.start()
 
 
-
-
 def get_serial(theta_list):
+	"""
+	theta_listに含まれる各Thetaのシリアル番号を出力する。  
+	ループを関数外部にするか、否かは今後の実装次第。  
+	逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
+	"""
+
 	for addr in theta_list:
 		print('[{}]'.format(addr) )
-		sp.check_call(
-			"gphoto2 --get-config=serialnumber --port={}".format(addr),
-			shell=True
-		)
+		camera, camera_config = camera_control_util(addr)
+		status_config = camera_config.get_child_by_name('status')
+		print(status_config.get_child_by_name('serialnumber').get_value() )
+		camera.exit()
 		print("")
+
 
 def get_bat_lv(theta_list):
+	"""
+	theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。  
+	ループを関数外部にするか、否かは今後の実装次第。  
+	逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
+	"""
 	result_list = []
 	for addr in theta_list:
-		result = sp.check_output(
-			"gphoto2 --get-config=batterylevel --port={}".format(addr),
-			shell=True
-		)
-		result = result.rsplit(" ",1)[1]
-		result_list.append( int( result.rstrip("%\n") ) )
+		print('[{}]'.format(addr) )
+		camera, camera_config = camera_control_util(addr)
+		status_config = camera_config.get_child_by_name('status')
+		battery_level = status_config.get_child_by_name('batterylevel').get_value()
+		camera.exit()
+		battery_level = int(''.join( [x for x in battery_level if x.isdigit() ] ) )
+
+		print(battery_level)
+		result_list.append(battery_level)
 	return result_list
 
+
 def check_rem_time_v(theta_list):
+	"""
+	ストレージ容量に起因する残時間の表示
+	"""
 	for addr in theta_list:
 		print('[{}]'.format(addr) )
-		sp.check_call(
-			"gphoto2 --get-config=d80d --port={}".format(addr),
-			shell=True
-		)
+		camera, camera_config = camera_control_util(addr)
+		other_config = camera_config.get_child_by_name('other')
+		print(other_config.get_child_by_name('d80d').get_value() )
+		camera.exit()
 		print("")
-
 
 
 def _unittest():
 	theta_list = connect_init()
-
-
+	get_serial(theta_list)
+	print(get_bat_lv(theta_list) )
+	start_capture(theta_list)
+	time.sleep(5)
+	finish_capture(theta_list)
+	time.sleep(3)
+	check_rem_time_v(theta_list)
 
 if __name__ == "__main__":
 	sys.exit(_unittest())
