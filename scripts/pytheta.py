@@ -26,6 +26,7 @@ import re # バスデバイス文字列を分割するため使用
 import threading
 import six
 import gphoto2 as gp
+from get_files import get_files as get_files_inner
 
 if six.PY2: import urllib as url
 else:       import urllib.parse as url
@@ -275,6 +276,7 @@ def get_rem_time_v(theta_list):
 	"""
 	ストレージ容量に起因する残時間の表示
 	"""
+	# 
 	result_list = []
 	for addr in theta_list:
 		#print('[{}]'.format(addr) )
@@ -283,6 +285,26 @@ def get_rem_time_v(theta_list):
 		result_list.append(other_config.get_child_by_name('d80d').get_value() )
 		camera.exit()
 	return result_list
+
+
+def get_files(theta_list):
+	# 保存先 親ディレクトリ
+	PHOTO_DIR = os.path.expanduser('~/Pictures/from_camera')
+	# 保存先 小ディレクトリ
+	PHOTO_SUB_DIR = '%Y/%Y_%m_%d/'
+	
+	threads = []
+	for addr in theta_list:
+		camera, _ = camera_control_util(addr)
+		threads.append(
+			threading.Thread(
+				name=addr,
+				target=get_files_inner,
+				args=(camera, PHOTO_DIR, PHOTO_SUB_DIR,)
+			)
+		)
+	for i in threads:
+		i.start()
 
 
 def _unittest():
