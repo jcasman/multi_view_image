@@ -21,15 +21,15 @@ import sys
 import subprocess as sp
 import os
 import time
-# import glob #アンマウント先が存在しているかの判定に使用していた。
-import re # バスデバイス文字列を分割するため使用
+import re 
 import threading
 import six
 import gphoto2 as gp
+
 from get_files import get_files as get_files_inner
 
-if six.PY2: import urllib as url
-else:       import urllib.parse as url
+if   six.PY2: import urllib as url
+elif six.PY3: import urllib.parse as url
 
 
 # Properties (milliseconds)
@@ -305,6 +305,9 @@ def get_files(theta_list):
 		)
 	for i in threads:
 		i.start()
+	
+	for i in threads:
+		i.join()
 
 
 def _unittest():
@@ -320,8 +323,11 @@ def _unittest():
 		time.sleep(1)
 
 	finish_capture(theta_list)
-
 	
+	time.sleep(2)
+
+	get_files(theta_list)
+
 
 if __name__ == "__main__":
 	sys.exit(_unittest())
