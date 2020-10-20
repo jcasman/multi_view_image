@@ -212,6 +212,9 @@ def start_capture(theta_list):
 	for i in threads:
 		i.start()
 
+	for i in threads:
+		i.join()
+
 
 def inner_finish_capture(addr):
 	"""
@@ -234,6 +237,9 @@ def finish_capture(theta_list):
 		)
 	for i in threads:
 		i.start()
+
+	for i in threads:
+		i.join()
 
 
 def get_serial(theta_list):
@@ -315,16 +321,17 @@ def _unittest():
 	get_serial(theta_list)
 	time.sleep(1)
 	start_capture(theta_list)
-	time.sleep(2)
+	#time.sleep(2)
 	for _ in range(5):
 		print(get_bat_lv(theta_list) )
-		time.sleep(1)
+		#time.sleep(1)
 		print(get_rem_time_v(theta_list) )
+		print("")
 		time.sleep(1)
 
 	finish_capture(theta_list)
 	
-	time.sleep(2)
+	#time.sleep(2)
 
 	get_files(theta_list)
 
