@@ -6,10 +6,22 @@
 import time
 import pytheta
 
-t_list = pytheta.connect_init()
 
-pytheta.start_capture(t_list)
 
-time.sleep(5)
+theta_list = pytheta.connect_init()
 
-pytheta.finish_capture(t_list)
+time.sleep(2)
+
+pytheta.start_capture(theta_list)
+time.sleep(3)
+for _ in range(5):
+	print(pytheta.get_bat_lv(theta_list) )
+	time.sleep(1)
+	print(pytheta.get_rem_time_v(theta_list) )
+	print("")
+	time.sleep(1)
+
+time.sleep(2)
+
+pytheta.finish_capture(theta_list)
+

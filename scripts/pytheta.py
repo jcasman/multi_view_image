@@ -260,40 +260,47 @@ def get_bat_lv(theta_list):
 	"""
 	result_list = []
 	for addr in theta_list:
-		print('[{}]'.format(addr) )
+		#print('[{}]'.format(addr) )
 		camera, camera_config = camera_control_util(addr)
 		status_config = camera_config.get_child_by_name('status')
 		battery_level = status_config.get_child_by_name('batterylevel').get_value()
 		camera.exit()
 		battery_level = int(''.join( [x for x in battery_level if x.isdigit() ] ) )
 
-		print(battery_level)
+		#print(battery_level)
 		result_list.append(battery_level)
 	return result_list
 
 
-def check_rem_time_v(theta_list):
+def get_rem_time_v(theta_list):
 	"""
 	ストレージ容量に起因する残時間の表示
 	"""
+	result_list = []
 	for addr in theta_list:
-		print('[{}]'.format(addr) )
+		#print('[{}]'.format(addr) )
 		camera, camera_config = camera_control_util(addr)
 		other_config = camera_config.get_child_by_name('other')
-		print(other_config.get_child_by_name('d80d').get_value() )
+		result_list.append(other_config.get_child_by_name('d80d').get_value() )
 		camera.exit()
-		print("")
+	return result_list
 
 
 def _unittest():
 	theta_list = connect_init()
 	get_serial(theta_list)
-	print(get_bat_lv(theta_list) )
+	time.sleep(1)
 	start_capture(theta_list)
-	time.sleep(5)
+	time.sleep(2)
+	for _ in range(5):
+		print(get_bat_lv(theta_list) )
+		time.sleep(1)
+		print(get_rem_time_v(theta_list) )
+		time.sleep(1)
+
 	finish_capture(theta_list)
-	time.sleep(3)
-	check_rem_time_v(theta_list)
+
+	
 
 if __name__ == "__main__":
 	sys.exit(_unittest())
