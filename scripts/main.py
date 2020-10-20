@@ -24,4 +24,3 @@ for _ in range(5):
 time.sleep(2)
 
 pytheta.finish_capture(theta_list)
-

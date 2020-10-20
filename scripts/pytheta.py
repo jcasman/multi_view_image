@@ -153,10 +153,9 @@ def connect_init():
 	theta_list = check_if_theta(xtp_dev_list)
 	unmount_theta(theta_list)
 
-	"""
-	for addr in theta_list:
-		print('[{:s}]'.format(addr) )
-	"""
+	#for addr in theta_list:
+	#	print('[{:s}]'.format(addr) )
+
 	return theta_list
 
 
