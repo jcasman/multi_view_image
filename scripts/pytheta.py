@@ -133,7 +133,8 @@ def connect_init():
 		Returns
 		-------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: connected THETA List
 	"""
 
 	logging.basicConfig(
@@ -144,7 +145,8 @@ def connect_init():
 
 	xtp_dev_list = get_xtp_dev_list()
 	theta_list = check_if_theta(xtp_dev_list)
-	unmount_theta(theta_list)
+	# I was getting an error with the unmount and commented it out.
+	# unmount_theta(theta_list)
 
 	#for addr in theta_list:
 	#	print('[{:s}]'.format(addr) )
@@ -230,8 +232,8 @@ def inner_start_capture(addr):
 	# 孫ウィジェットの取得
 	movie = select_config_util(camera_config, 'actions', "movie")
 	
-	movie.set_value(1) # 値を指定
-	camera.set_config(camera_config) # 値を適応
+	movie.set_value(1) # EN:Specify a value.  JP:値を指定
+	camera.set_config(camera_config) # En:Change to appropriate value. JP:値を適応
 
 	camera.exit()
 
