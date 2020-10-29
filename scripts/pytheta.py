@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。
+JP: 複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。
 ライセンスはGPL3
+EN: Multiple spherical cameras: This program is to control a THETA using Ubuntu
+License is GPL3
 """
 # pylint: disable=C0111
 # ↑プログラムの説明ドキュメントがないよ!というエラーの防止
