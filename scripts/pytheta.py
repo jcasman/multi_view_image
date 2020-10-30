@@ -301,16 +301,16 @@ def start_capture(theta_list):
 
 def inner_finish_capture(addr):
 	"""
-		JP: 撮影終了処理を担う実処理部分
-		現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用
-		EN: Actual processing part responsible for shooting end processing
-        Currently, the method using Python-gPhoto2 is unknown, so CLI-gPhoto2 is used instead.
- 
-		Parameters
-		----------
-		addr : char
-			JP: 接続されているThetaのID
-			EN: ID of connected THETA
+	JP: 撮影終了処理を担う実処理部分
+	現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用
+	EN: Actual processing part responsible for shooting end processing
+	Currently, the method using Python-gPhoto2 is unknown, so CLI-gPhoto2 is used instead.
+	 
+	Parameters
+	----------
+	addr : char
+		JP: 接続されているThetaのID
+		EN: ID of connected THETA
 	"""
 
 	# JP: 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
