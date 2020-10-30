@@ -3,6 +3,16 @@ This project started since 2019, Shuhei Kozasa's master thesis.
 Naoki Sato [posted in the RICOH THETA developer community](https://community.theta360.guide/t/using-usb-api-mtp-with-libghoto2-and-python-bindings-on-macos-raspberry-pi-linux-ros/4521/48?u=craig).  
 This is entirely his code.
 
+## Documentation
+
+Documentation for the module is available in English and Japanese at:
+
+CHANGE URL TO OFFICIAL REPOSITORY
+
+[HTML documentation available at temporary URL](
+https://codetricity.github.io/multi_view_image_modified/)
+
+
 ## Modifications
 
 I've added version and package information to Naoki's README based
