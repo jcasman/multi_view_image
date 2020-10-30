@@ -2,10 +2,17 @@
 # -*- coding: utf-8 -*-
 
 """
-JP: 複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。
+pytheta is a Python library that interfaces with gphoto2 to control multiple RICOH THETA cameras 
+using Ubuntu. It is distributed under the GPL3 license.  The RICOH THETA must be turned
+on and connected to the computer with a USB cable. 
+
+
+--------
+Japanese
+--------
+複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。
 ライセンスはGPL3
-EN: Multiple spherical cameras: This program is to control a THETA using Ubuntu
-License is GPL3
+
 """
 # pylint: disable=C0111
 # JP: ↑プログラムの説明ドキュメントがないよ!というエラーの防止
@@ -40,13 +47,14 @@ elif six.PY3: import urllib.parse as url
 TIMEOUT = 10
 
 
-
-
-
 class no_xtp_dev(Exception):
 	"""
-	JP: xTPデバイスが何もないことを示すエラー
-	EN: Error indicating that there are no xTP devices
+	Error indicating that there are no xTP devices
+
+	--------
+	Japanese
+	--------
+	xTPデバイスが何もないことを示すエラー
 	"""
 	def __str__(self):
 		return "xTPデバイスが何もありません"
@@ -76,23 +84,36 @@ def get_xtp_dev_list():
 
 def check_if_theta(xtp_dev_list):
 	"""
-		JP: lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。  
-		gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。
-		EN: Using lsusb, extract Theta from the list of MTP or PTP devices acquired.
-		This is the implementation since the recognition function on the gPhoto2 side cannot be used while mounted.
+	Using lsusb, extract RICOH THETA camera from the list of MTP or PTP devices acquired.
+	We are using this technique with lsusb since gPhoto2 cannot be used to identify the
+	RICOH THETA cameras when they are mounted.
 
+	Parameters
+	----------
+	xtp_dev_lis : list
+		List of connected xTP devices
 
-		Parameters
-		----------
-		xtp_dev_lis : list
-			JP: 接続されているxTPデバイスのリスト
-			EN: List of connected xTP devices
+	Returns
+	-------
+	theta_list : list
+		List of connected THETAs
 
-		Returns
-		-------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	--------
+	Japanese
+	--------
+	lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。  
+	gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。			
+
+	Parameters
+	----------
+	xtp_dev_lis : list
+		接続されているxTPデバイスのリスト
+
+	Returns
+	-------
+	theta_list : list
+		接続されているThetaのリスト
+			
 	"""
 
 	print("[debug] check_if_theta 処理開始")
@@ -146,14 +167,23 @@ def unmount_theta(theta_list):
 
 def connect_init():
 	"""
-		JP: 接続に際して一斉に行う項目をまとめた関数
-		EN: A function that summarizes the items to be performed all at once when connecting
+	A function that summarizes the items to be performed all at once when connecting.
 
-		Returns
-		-------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	Returns
+	-------
+	theta_list : list
+		List of connected THETAs
+
+	--------
+	Japanese
+	--------
+	接続に際して一斉に行う項目をまとめた関数
+
+	Returns
+	-------
+	theta_list : list
+		接続されているThetaのリスト
+
 	"""
 
 	logging.basicConfig(
@@ -175,28 +205,44 @@ def connect_init():
 
 def camera_control_util(addr):
 	"""
-	JP: Python-gPhoto2において
-	コマンドを送信するThetaを選択して送信する必要がある関数の
-	基本部分をまるっとまとめたユーティリティ。
-	EN: A utility that summarizes the basic parts of a function 
+	A utility that summarizes the basic parts of a function 
 	that you need in order to select and send to a Theta sending a command in Python-gPhoto2.
 
+	
 	Parameters
 	----------
 	addr : char
-		JP: 接続されているThetaのID
-		EN: ID for connected THETA
+		ID for connected THETA
 
 	Returns
 	-------
 	camera : Camera object
 	parent_widget : camera widget object
+
+	--------
+	Japanese
+	--------
+	Python-gPhoto2において
+	コマンドを送信するThetaを選択して送信する必要がある関数の
+	基本部分をまるっとまとめたユーティリティ。
+
+	Parameters
+	----------
+	addr : char
+		接続されているThetaのID
+
+	Returns
+	-------
+	camera : Camera object
+	parent_widget : camera widget object
+
+
+
 	"""
 
 	camera = gp.Camera()
-
+	# Search for a port by camera port name (?)
 	# JP: カメラのポート名でポートを検索(?)
-	# EN: Search for a port by camera port name (?)
 
 	port_info_list = gp.PortInfoList()
 	port_info_list.load()
@@ -217,27 +263,40 @@ def camera_control_util(addr):
 
 def select_config_util(parent_widget, child_name, grandchild_name):
 	"""
-		JP: Python-gPhoto2によって諸ステータスを取得する際に
-		重複する部分をまるっとまとめたユーティリティ。
-		EN: A utility that puts together all the overlapping 
-		parts when getting various statuses with Python-gPhoto2.
+	A utility that puts together all the overlapping 
+	parts when getting various statuses with Python-gPhoto2.
+	
+	Parameters
+	----------
+	parent_widget : camera widget object
+	child_name : char
+		Name of child widget
+	grandchild_name : char
+		Name of grandchild widget
 
-		Parameters
-		----------
-		parent_widget : camera widget object
-		child_name : char
-			JP: 子ウィジェットの名前
-			EN: Name of child widget
-		grandchild_name : char
-			JP: 孫ウィジェットの名前
-			EN: Name of grandchild widget
+	Returns
+	-------
+	grandchild_widget : camera widget object？
+		JP: 孫ウィジェット
+		EN: Grandchild widget
 
-		Returns
-		-------
-		grandchild_widget : camera widget object？
-			JP: 孫ウィジェット
-			EN: Grandchild widget
+	--------
+	Japanese
+	--------
+	Python-gPhoto2によって諸ステータスを取得する際に 重複する部分をまるっとまとめたユーティリティ。
+	
+	Parameters
+	----------
+	parent_widget : camera widget object
+	child_name : char
+		子ウィジェットの名前
+	grandchild_name : char
+		孫ウィジェットの名前
 
+	Returns
+	-------
+	grandchild_widget : camera widget object？
+		孫ウィジェット
 	"""
 	# JP: 設定対象の子ウィジェットを選択
 	# EN: Select the child widget to be set
@@ -326,14 +385,22 @@ def inner_finish_capture(addr):
 
 def finish_capture(theta_list):
 	"""
-		JP: 本体関数inner_finish_captureをマルチスレッドで実行するための関数
-		EN: Function for executing the body function inner_finish_capture in multiple threads
+	Function for executing the body function inner_finish_capture in multiple threads
 
-		Parameters
-		----------
-		addr : char
-			JP: 接続されているThetaのID
-			EN: ID of connected THETAs
+	Parameters
+	----------
+	addr : char
+		EN: ID of connected THETAs
+
+	--------
+	Japanese
+	--------
+	本体関数inner_finish_captureをマルチスレッドで実行するための関数
+
+	Parameters
+	----------
+	addr : char
+		接続されているThetaのID
 	"""
 	threads = []
 	for addr in theta_list:

@@ -10,10 +10,16 @@
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pytheta</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/craig/Documents/Development/multi_view_image_modified/scripts/pytheta.py">/home/craig/Documents/Development/multi_view_image_modified/scripts/pytheta.py</a></font></td></tr></table>
-    <p><tt>JP:&nbsp;複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。<br>
-ライセンスはGPL3<br>
-EN:&nbsp;Multiple&nbsp;spherical&nbsp;cameras:&nbsp;This&nbsp;program&nbsp;is&nbsp;to&nbsp;control&nbsp;a&nbsp;THETA&nbsp;using&nbsp;Ubuntu<br>
-License&nbsp;is&nbsp;GPL3</tt></p>
+    <p><tt>pytheta&nbsp;is&nbsp;a&nbsp;Python&nbsp;library&nbsp;that&nbsp;interfaces&nbsp;with&nbsp;gphoto2&nbsp;to&nbsp;control&nbsp;multiple&nbsp;RICOH&nbsp;THETA&nbsp;cameras&nbsp;<br>
+using&nbsp;Ubuntu.&nbsp;It&nbsp;is&nbsp;distributed&nbsp;under&nbsp;the&nbsp;GPL3&nbsp;license.&nbsp;&nbsp;The&nbsp;RICOH&nbsp;THETA&nbsp;must&nbsp;be&nbsp;turned<br>
+on&nbsp;and&nbsp;connected&nbsp;to&nbsp;the&nbsp;computer&nbsp;with&nbsp;a&nbsp;USB&nbsp;cable.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。<br>
+ライセンスはGPL3</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -53,8 +59,12 @@ License&nbsp;is&nbsp;GPL3</tt></p>
 <font color="#000000" face="helvetica, arial"><a name="no_xtp_dev">class <strong>no_xtp_dev</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>JP:&nbsp;xTPデバイスが何もないことを示すエラー<br>
-EN:&nbsp;Error&nbsp;indicating&nbsp;that&nbsp;there&nbsp;are&nbsp;no&nbsp;xTP&nbsp;devices<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>Error&nbsp;indicating&nbsp;that&nbsp;there&nbsp;are&nbsp;no&nbsp;xTP&nbsp;devices<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+xTPデバイスが何もないことを示すエラー<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="pytheta.html#no_xtp_dev">no_xtp_dev</a></dd>
@@ -116,55 +126,97 @@ Data descriptors inherited from <a href="exceptions.html#BaseException">exceptio
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-camera_control_util"><strong>camera_control_util</strong></a>(addr)</dt><dd><tt>JP:&nbsp;Python-gPhoto2において<br>
-コマンドを送信するThetaを選択して送信する必要がある関数の<br>
-基本部分をまるっとまとめたユーティリティ。<br>
-EN:&nbsp;A&nbsp;utility&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;basic&nbsp;parts&nbsp;of&nbsp;a&nbsp;function&nbsp;<br>
+<td width="100%"><dl><dt><a name="-camera_control_util"><strong>camera_control_util</strong></a>(addr)</dt><dd><tt>A&nbsp;utility&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;basic&nbsp;parts&nbsp;of&nbsp;a&nbsp;function&nbsp;<br>
 that&nbsp;you&nbsp;need&nbsp;in&nbsp;order&nbsp;to&nbsp;select&nbsp;and&nbsp;send&nbsp;to&nbsp;a&nbsp;Theta&nbsp;sending&nbsp;a&nbsp;command&nbsp;in&nbsp;Python-gPhoto2.<br>
+&nbsp;<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 addr&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;for&nbsp;connected&nbsp;THETA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;for&nbsp;connected&nbsp;THETA<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+camera&nbsp;:&nbsp;Camera&nbsp;object<br>
+parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+Python-gPhoto2において<br>
+コマンドを送信するThetaを選択して送信する必要がある関数の<br>
+基本部分をまるっとまとめたユーティリティ。<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのID<br>
 &nbsp;<br>
 Returns<br>
 -------<br>
 camera&nbsp;:&nbsp;Camera&nbsp;object<br>
 parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object</tt></dd></dl>
- <dl><dt><a name="-check_if_theta"><strong>check_if_theta</strong></a>(xtp_dev_list)</dt><dd><tt>JP:&nbsp;lsusbを用いて獲得したMTP&nbsp;or&nbsp;PTPデバイスの一覧の中からThetaを抽出する。&nbsp;&nbsp;<br>
-gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。<br>
-EN:&nbsp;Using&nbsp;lsusb,&nbsp;extract&nbsp;Theta&nbsp;from&nbsp;the&nbsp;list&nbsp;of&nbsp;MTP&nbsp;or&nbsp;PTP&nbsp;devices&nbsp;acquired.<br>
-This&nbsp;is&nbsp;the&nbsp;implementation&nbsp;since&nbsp;the&nbsp;recognition&nbsp;function&nbsp;on&nbsp;the&nbsp;gPhoto2&nbsp;side&nbsp;cannot&nbsp;be&nbsp;used&nbsp;while&nbsp;mounted.<br>
-&nbsp;<br>
+ <dl><dt><a name="-check_if_theta"><strong>check_if_theta</strong></a>(xtp_dev_list)</dt><dd><tt>Using&nbsp;lsusb,&nbsp;extract&nbsp;RICOH&nbsp;THETA&nbsp;camera&nbsp;from&nbsp;the&nbsp;list&nbsp;of&nbsp;MTP&nbsp;or&nbsp;PTP&nbsp;devices&nbsp;acquired.<br>
+We&nbsp;are&nbsp;using&nbsp;this&nbsp;technique&nbsp;with&nbsp;lsusb&nbsp;since&nbsp;gPhoto2&nbsp;cannot&nbsp;be&nbsp;used&nbsp;to&nbsp;identify&nbsp;the<br>
+RICOH&nbsp;THETA&nbsp;cameras&nbsp;when&nbsp;they&nbsp;are&nbsp;mounted.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 xtp_dev_lis&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
 &nbsp;<br>
 Returns<br>
 -------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-connect_init"><strong>connect_init</strong></a>()</dt><dd><tt>JP:&nbsp;接続に際して一斉に行う項目をまとめた関数<br>
-EN:&nbsp;A&nbsp;function&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;items&nbsp;to&nbsp;be&nbsp;performed&nbsp;all&nbsp;at&nbsp;once&nbsp;when&nbsp;connecting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+lsusbを用いて獲得したMTP&nbsp;or&nbsp;PTPデバイスの一覧の中からThetaを抽出する。&nbsp;&nbsp;<br>
+gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているxTPデバイスのリスト<br>
 &nbsp;<br>
 Returns<br>
 -------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-finish_capture"><strong>finish_capture</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;本体関数inner_finish_captureをマルチスレッドで実行するための関数<br>
-EN:&nbsp;Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_finish_capture&nbsp;in&nbsp;multiple&nbsp;threads<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+ <dl><dt><a name="-connect_init"><strong>connect_init</strong></a>()</dt><dd><tt>A&nbsp;function&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;items&nbsp;to&nbsp;be&nbsp;performed&nbsp;all&nbsp;at&nbsp;once&nbsp;when&nbsp;connecting.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+接続に際して一斉に行う項目をまとめた関数<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+ <dl><dt><a name="-finish_capture"><strong>finish_capture</strong></a>(theta_list)</dt><dd><tt>Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_finish_capture&nbsp;in&nbsp;multiple&nbsp;threads<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 addr&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+本体関数inner_finish_captureをマルチスレッドで実行するための関数<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのID</tt></dd></dl>
  <dl><dt><a name="-get_bat_lv"><strong>get_bat_lv</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。&nbsp;&nbsp;<br>
 ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
 逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
@@ -242,26 +294,40 @@ Parameters<br>
 addr&nbsp;:&nbsp;char<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;the&nbsp;connected&nbsp;THETA</tt></dd></dl>
- <dl><dt><a name="-select_config_util"><strong>select_config_util</strong></a>(parent_widget, child_name, grandchild_name)</dt><dd><tt>JP:&nbsp;Python-gPhoto2によって諸ステータスを取得する際に<br>
-重複する部分をまるっとまとめたユーティリティ。<br>
-EN:&nbsp;A&nbsp;utility&nbsp;that&nbsp;puts&nbsp;together&nbsp;all&nbsp;the&nbsp;overlapping&nbsp;<br>
+ <dl><dt><a name="-select_config_util"><strong>select_config_util</strong></a>(parent_widget, child_name, grandchild_name)</dt><dd><tt>A&nbsp;utility&nbsp;that&nbsp;puts&nbsp;together&nbsp;all&nbsp;the&nbsp;overlapping&nbsp;<br>
 parts&nbsp;when&nbsp;getting&nbsp;various&nbsp;statuses&nbsp;with&nbsp;Python-gPhoto2.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object<br>
 child_name&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;子ウィジェットの名前<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Name&nbsp;of&nbsp;child&nbsp;widget<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;child&nbsp;widget<br>
 grandchild_name&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;孫ウィジェットの名前<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Name&nbsp;of&nbsp;grandchild&nbsp;widget<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;grandchild&nbsp;widget<br>
 &nbsp;<br>
 Returns<br>
 -------<br>
 grandchild_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object？<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;孫ウィジェット<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Grandchild&nbsp;widget</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Grandchild&nbsp;widget<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+Python-gPhoto2によって諸ステータスを取得する際に&nbsp;重複する部分をまるっとまとめたユーティリティ。<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object<br>
+child_name&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子ウィジェットの名前<br>
+grandchild_name&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孫ウィジェットの名前<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+grandchild_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object？<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孫ウィジェット</tt></dd></dl>
  <dl><dt><a name="-start_capture"><strong>start_capture</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;本体関数inner_start_captureをマルチスレッドで実行するための関数<br>
 EN:&nbsp;Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_start_capture&nbsp;in&nbsp;multiple&nbsp;threads<br>
 &nbsp;<br>
