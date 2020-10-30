@@ -46,7 +46,7 @@ TIMEOUT = 10
 class no_xtp_dev(Exception):
 	"""
 	JP: xTPデバイスが何もないことを示すエラー
-    EN: Error indicating that there are no xTP devices
+	EN: Error indicating that there are no xTP devices
 	"""
 	def __str__(self):
 		return "xTPデバイスが何もありません"
@@ -56,7 +56,7 @@ def get_xtp_dev_list():
 	"""
 		JP: 接続されているxTPデバイスのリストを作成する。  
 		xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
-        EN: Make a list of connected xTP devices.
+		EN: Make a list of connected xTP devices.
 		xTP device is a general term for PTP and MTP devices. (I named it arbitrarily.)
 
 
@@ -86,7 +86,7 @@ def check_if_theta(xtp_dev_list):
 		----------
 		xtp_dev_lis : list
 			JP: 接続されているxTPデバイスのリスト
-            EN: List of connected xTP devices
+			EN: List of connected xTP devices
 
 		Returns
 		-------
@@ -175,22 +175,22 @@ def connect_init():
 
 def camera_control_util(addr):
 	"""
-		JP: Python-gPhoto2において
-		コマンドを送信するThetaを選択して送信する必要がある関数の
-		基本部分をまるっとまとめたユーティリティ。
-		EN: A utility that summarizes the basic parts of a function 
-		that you need in order to select and send to a Theta sending a command in Python-gPhoto2.
+	JP: Python-gPhoto2において
+	コマンドを送信するThetaを選択して送信する必要がある関数の
+	基本部分をまるっとまとめたユーティリティ。
+	EN: A utility that summarizes the basic parts of a function 
+	that you need in order to select and send to a Theta sending a command in Python-gPhoto2.
 
-		Parameters
-		----------
-		addr : char
-			JP: 接続されているThetaのID
-			EN: ID for connected THETA
+	Parameters
+	----------
+	addr : char
+		JP: 接続されているThetaのID
+		EN: ID for connected THETA
 
-		Returns
-		-------
-		camera : Camera object
-		parent_widget : camera widget object
+	Returns
+	-------
+	camera : Camera object
+	parent_widget : camera widget object
 	"""
 
 	camera = gp.Camera()

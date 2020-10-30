@@ -6,7 +6,9 @@ This is entirely his code.
 ## Modifications
 
 I've added version and package information to Naoki's README based
-on his [post](https://community.theta360.guide/t/using-usb-api-mtp-with-libghoto2-and-python-bindings-on-macos-raspberry-pi-linux-ros/4521/50?u=craig).  
+on his [post](https://community.theta360.guide/t/using-usb-api-mtp-with-libghoto2-and-python-bindings-on-macos-raspberry-pi-linux-ros/4521/50?u=craig).
+
+Change docstrings to conform to [PEP257](https://www.python.org/dev/peps/pep-0257/)
 
 
 ## Software Version
@@ -29,8 +31,6 @@ $ sudo apt install python-pip
 $ python -m pip install pipenv
 $ pipenv install gphoto2
 $ pipenv shell
-
-
 ```
 
 
