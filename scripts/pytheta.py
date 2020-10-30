@@ -8,10 +8,12 @@ EN: Multiple spherical cameras: This program is to control a THETA using Ubuntu
 License is GPL3
 """
 # pylint: disable=C0111
-# ↑プログラムの説明ドキュメントがないよ!というエラーの防止
+# JP: ↑プログラムの説明ドキュメントがないよ!というエラーの防止
+# EN: ↑ Prevention of the error where there is no program description document!
 
 # pylint: disable=C0321
-# 改行したほうがいいよ！という推奨を無視
+# JP: 改行したほうがいいよ！という推奨を無視
+# EN: Ingnoring the suggestion that you should start a new line!
 
 # Trailing whitespace
 # pylint: disable=C0303
@@ -43,7 +45,8 @@ TIMEOUT = 10
 
 class no_xtp_dev(Exception):
 	"""
-	xTPデバイスが何もないことを示すエラー
+	JP: xTPデバイスが何もないことを示すエラー
+    EN: Error indicating that there are no xTP devices
 	"""
 	def __str__(self):
 		return "xTPデバイスが何もありません"
@@ -51,14 +54,17 @@ class no_xtp_dev(Exception):
 
 def get_xtp_dev_list():
 	"""
-		接続されているxTPデバイスのリストを作成する。  
+		JP: 接続されているxTPデバイスのリストを作成する。  
 		xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
+        EN: Make a list of connected xTP devices.
+		xTP device is a general term for PTP and MTP devices. (I named it arbitrarily.)
 
 
 		Returns
 		-------
 		xtp_dev_lis : list
-			接続されているxTPデバイスのリスト
+			JP: 接続されているxTPデバイスのリスト
+			EN: List of connected xTP devices
 	"""
 	xtp_dev_list = []
 	for name, addr in gp.check_result(gp.gp_camera_autodetect() ):
@@ -70,18 +76,23 @@ def get_xtp_dev_list():
 
 def check_if_theta(xtp_dev_list):
 	"""
-		lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。  
+		JP: lsusbを用いて獲得したMTP or PTPデバイスの一覧の中からThetaを抽出する。  
 		gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。
+		EN: Using lsusb, extract Theta from the list of MTP or PTP devices acquired.
+		This is the implementation since the recognition function on the gPhoto2 side cannot be used while mounted.
+
 
 		Parameters
 		----------
 		xtp_dev_lis : list
-			接続されているxTPデバイスのリスト
+			JP: 接続されているxTPデバイスのリスト
+            EN: List of connected xTP devices
 
 		Returns
 		-------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 	"""
 
 	print("[debug] check_if_theta 処理開始")
@@ -108,14 +119,19 @@ def check_if_theta(xtp_dev_list):
 
 def unmount_theta(theta_list):
 	"""
-		マウントされているThetaをアンマウントする。  
+		JP: マウントされているThetaをアンマウントする。  
 		そもそもマウントしないようにすれば良いかもしれないが、  
 		他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。
+		EN: Unmount mounted THETAs.
+		Ultimately, it may be better not to mount it, but this implementation was made because 
+		it is necessary to make settings that allow the master to use other equipment.
+
 
 		Parameters
 		----------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 	"""
 	for addr in theta_list:
 		path = "/run/user/1000/gvfs/gphoto2:host=%5B"+url.quote(addr)+"%5D"
@@ -123,20 +139,21 @@ def unmount_theta(theta_list):
 			print("[{:s}]をアンマウントします".format(path) )
 			sp.check_output(["gvfs-mount", "-u", path])
 			# cmd = "gvfs-mount -u /run/user/1000/gvfs/mtp:host=%5B"+url.quote(addr)+"%5D"
-			# sp.check_output(cmd,shell=True) #こういう書き方もある。
+			# sp.check_output(cmd,shell=True) #JP: こういう書き方もある。EN: Can be written this way, too.
 		else:
 			print("[{:s}]はアンマウント済みです".format(path))
 
 
 def connect_init():
 	"""
-		接続に際して一斉に行う項目をまとめた関数
+		JP: 接続に際して一斉に行う項目をまとめた関数
+		EN: A function that summarizes the items to be performed all at once when connecting
 
 		Returns
 		-------
 		theta_list : list
 			JP: 接続されているThetaのリスト
-			EN: connected THETA List
+			EN: List of connected THETAs
 	"""
 
 	logging.basicConfig(
@@ -158,14 +175,17 @@ def connect_init():
 
 def camera_control_util(addr):
 	"""
-		Python-gPhoto2において
+		JP: Python-gPhoto2において
 		コマンドを送信するThetaを選択して送信する必要がある関数の
 		基本部分をまるっとまとめたユーティリティ。
+		EN: A utility that summarizes the basic parts of a function 
+		that you need in order to select and send to a Theta sending a command in Python-gPhoto2.
 
 		Parameters
 		----------
 		addr : char
-			接続されているThetaのID
+			JP: 接続されているThetaのID
+			EN: ID for connected THETA
 
 		Returns
 		-------
@@ -175,7 +195,9 @@ def camera_control_util(addr):
 
 	camera = gp.Camera()
 
-	# カメラのポート名でポートを検索(?)
+	# JP: カメラのポート名でポートを検索(?)
+	# EN: Search for a port by camera port name (?)
+ 
 	port_info_list = gp.PortInfoList()
 	port_info_list.load()
 
@@ -186,7 +208,8 @@ def camera_control_util(addr):
 	try:
 		parent_widget = camera.get_config()
 	except gp.GPhoto2Error:
-		# 念の為例外を立てる処理はそのまま。意味があるかは不明
+		# JP: 念の為例外を立てる処理はそのまま。意味があるかは不明
+		# EN: Just in case, the process of making an exception remains the same. Not sure if it makes sense
 		raise RuntimeError("Unable to connect to Camera")
 
 	return camera, parent_widget
@@ -194,60 +217,75 @@ def camera_control_util(addr):
 
 def select_config_util(parent_widget, child_name, grandchild_name):
 	"""
-		Python-gPhoto2によって諸ステータスを取得する際に
+		JP: Python-gPhoto2によって諸ステータスを取得する際に
 		重複する部分をまるっとまとめたユーティリティ。
+		EN: A utility that puts together all the overlapping 
+		parts when getting various statuses with Python-gPhoto2.
 
 		Parameters
 		----------
 		parent_widget : camera widget object
 		child_name : char
-			子ウィジェットの名前
+			JP: 子ウィジェットの名前
+			EN: Name of child widget
 		grandchild_name : char
-			孫ウィジェットの名前
+			JP: 孫ウィジェットの名前
+			EN: Name of grandchild widget
 
 		Returns
 		-------
 		grandchild_widget : camera widget object？
-			孫ウィジェット
+			JP: 孫ウィジェット
+			EN: Grandchild widget
 
 	"""
-	# 設定対象の子ウィジェットを選択
+	# JP: 設定対象の子ウィジェットを選択
+	# EN: Select the child widget to be set
+ 
 	child_widget = parent_widget.get_child_by_name(child_name) 
 
-	# 同 孫ウィジェットを選択
+	# JP: 同 孫ウィジェットを選択
+	# EN: Choosing the same grandchild widget
+
 	grandchild_widget = child_widget.get_child_by_name(grandchild_name) 
 	return grandchild_widget
 
 
 def inner_start_capture(addr):
 	"""
-		撮影開始処理を担う実処理部分
+		JP: 撮影開始処理を担う実処理部分
+		EN: Actual processing part responsible for the start of shooting processing
 
 		Parameters
 		----------
 		addr : char
-			接続されているThetaのID
+			JP: 接続されているThetaのID
+			EN: ID of the connected THETA
 	"""
 
-	# 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
+	# JP: 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
+	# EN: Outputs the camera object and parent widget that have been set to be executed
 	camera, camera_config = camera_control_util(addr)
-	# 孫ウィジェットの取得
+	# JP: 孫ウィジェットの取得
+	# EN: Selecting the grandchild widget
 	movie = select_config_util(camera_config, 'actions', "movie")
 	
-	movie.set_value(1) # EN:Specify a value.  JP:値を指定
-	camera.set_config(camera_config) # En:Change to appropriate value. JP:値を適応
+	movie.set_value(1) # JP:値を指定 EN: Specify a value.  
+	camera.set_config(camera_config) # EN: Change to appropriate value. JP:値を適応
 
 	camera.exit()
 
 
 def start_capture(theta_list):
 	"""
-		本体関数inner_start_captureをマルチスレッドで実行するための関数
+		JP: 本体関数inner_start_captureをマルチスレッドで実行するための関数
+		EN: Function for executing the body function inner_start_capture in multiple threads
 
 		Parameters
 		----------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 	"""
 	threads = []
 	for addr in theta_list:
@@ -263,32 +301,39 @@ def start_capture(theta_list):
 
 def inner_finish_capture(addr):
 	"""
-		撮影終了処理を担う実処理部分
+		JP: 撮影終了処理を担う実処理部分
 		現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用
-
+		EN: Actual processing part responsible for shooting end processing
+        Currently, the method using Python-gPhoto2 is unknown, so CLI-gPhoto2 is used instead.
+ 
 		Parameters
 		----------
 		addr : char
-			接続されているThetaのID
+			JP: 接続されているThetaのID
+			EN: ID of connected THETA
 	"""
 
-	# 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
+	# JP: 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
+	# EN: Outputs the camera object and parent widget that have been set to be executed
 	camera, camera_config = camera_control_util(addr)
-	# 孫ウィジェットを取得して"."以下で値を指定
+	# JP: 孫ウィジェットを取得して"."以下で値を指定
+	# EN: Get the grandchild widget and specifues the value under "."
 	select_config_util(camera_config, 'actions', "opcode").set_value("0x1018,0xFFFFFFFF")
-	camera.set_config(camera_config) # 値を適応
+	camera.set_config(camera_config) # JP: 値を適応  EN: Set value
 
 	camera.exit()
 
 
 def finish_capture(theta_list):
 	"""
-		本体関数inner_finish_captureをマルチスレッドで実行するための関数
+		JP: 本体関数inner_finish_captureをマルチスレッドで実行するための関数
+		EN: Function for executing the body function inner_finish_capture in multiple threads
 
 		Parameters
 		----------
 		addr : char
-			接続されているThetaのID
+			JP: 接続されているThetaのID
+			EN: ID of connected THETAs
 	"""
 	threads = []
 	for addr in theta_list:
@@ -304,14 +349,18 @@ def finish_capture(theta_list):
 
 def get_serial(theta_list):
 	"""
-		theta_listに含まれる各Thetaのシリアル番号を出力する。  
+		JP: theta_listに含まれる各Thetaのシリアル番号を出力する。  
 		ループを関数外部にするか、否かは今後の実装次第。  
 		逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
+		EN: Output the serial number of each Theta included in theta_list.
+		Whether or not the loop is outside the function depends on future implementation.
+		I am doing gp.Camera over and over, but I am wondering if I can do this only once.
 
 		Parameters
 		----------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 	"""
 
 	for addr in theta_list:
@@ -324,14 +373,18 @@ def get_serial(theta_list):
 
 def get_bat_lv(theta_list):
 	"""
-		theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。  
+		JP: theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。  
 		ループを関数外部にするか、否かは今後の実装次第。  
 		逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
+		EN: Outputs as an integer the current battery level of each THETA contained in theta_list
+		Whether or not the loop is outside the function depends on future implementation.
+		I am doing gp.Camera over and over, but I am wondering if I can do this only once.
 
 		Parameters
 		----------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 	"""
 	result_list = []
 	for addr in theta_list:
@@ -345,23 +398,29 @@ def get_bat_lv(theta_list):
 
 def get_rem_time_v(theta_list):
 	"""
-		ストレージ容量に起因する残時間の表示[second]
+		JP: ストレージ容量に起因する残時間の表示[second]
+		EN: Display of remaining time due to storage capacity [in seconds]
 
 		Parameters
 		----------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 
 		Returns
 		-------
 		result_list : list
-			実行結果のリスト
+			JP: 実行結果のリスト
+			EN: List of execution results
 
 	"""
 	"""　
-		# デバイスプロパティコード：0xD80D RemainingVideos
-		# （ベンダー拡張プロパティ）
-		# 詳細：https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
+		# JP: デバイスプロパティコード：0xD80D RemainingVideos
+		# JP:（ベンダー拡張プロパティ）
+		# JP: 詳細：https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
+		# EN: Device Property Code: 0xD80D RemainingVideos
+		# EN: Vendor Extension Properties
+		# EN: Details: https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
 	"""
 
 	result_list = []
@@ -374,17 +433,22 @@ def get_rem_time_v(theta_list):
 
 def get_files(theta_list):
 	"""
-		カメラからファイルをダウンロードして本体ストレージへ保存する。
+		JP: カメラからファイルをダウンロードして本体ストレージへ保存する。
 		そして、カメラ側ストレージからこれを削除する。
+		EN: Download the file from the camera and save it in the main unit storage.
+		Then, delete it from  storage on the camera side.
 
 		Parameters
 		----------
 		theta_list : list
-			接続されているThetaのリスト
+			JP: 接続されているThetaのリスト
+			EN: List of connected THETAs
 	"""
-	# 保存先 親ディレクトリ
+	# JP: 保存先 親ディレクトリ
+	# EN: Destination parent directory
 	PHOTO_DIR = os.path.expanduser('~/Pictures/from_camera')
-	# 保存先 小ディレクトリ
+	# JP: 保存先 小ディレクトリ
+	# EN: Save destination sub directory
 	PHOTO_SUB_DIR = '%Y/%Y_%m_%d/'
 
 	threads = []
@@ -406,7 +470,8 @@ def get_files(theta_list):
 
 def _unittest():
 	"""
-		テスト
+		JP: テスト
+		EN: Test
 	"""
 
 	theta_list = connect_init()
