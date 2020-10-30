@@ -12,6 +12,14 @@ CHANGE URL TO OFFICIAL REPOSITORY
 [HTML documentation available at temporary URL](
 https://codetricity.github.io/multi_view_image_modified/)
 
+HTML is created with [pydoc](https://docs.python.org/2.7/library/pydoc.html).
+
+Example:
+
+```bash
+$ cd scripts
+$ pydoc -w pytheta
+```
 
 ## Modifications
 
@@ -31,7 +39,8 @@ Naoki originally developed this on Ubuntu 16.04.
 * Python          2.7.12
 * Python-gphoto2  2.2.2
 
-As some of the software packages are old I added a Pipfile and pipenv.
+As some of the software packages are old, I added a Pipfile and pipenv
+to specify the Python version.
 libgphoto2 and gphoto2 were compiled from source.
 
 To use pipenv.
@@ -43,6 +52,8 @@ $ pipenv install gphoto2
 $ pipenv shell
 ```
 
+Our intention is to get this to work with Python 3.8 or newer.
+At the moment, we are working with Python 2.7.
 
 
 # LICENSE
