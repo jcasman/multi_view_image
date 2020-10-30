@@ -1,0 +1,295 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pytheta</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pytheta</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/craig/Documents/Development/multi_view_image_modified/scripts/pytheta.py">/home/craig/Documents/Development/multi_view_image_modified/scripts/pytheta.py</a></font></td></tr></table>
+    <p><tt>JP:&nbsp;複数台の全天球カメラ：ThetaをUbuntuPC上で制御するためのプログラム。<br>
+ライセンスはGPL3<br>
+EN:&nbsp;Multiple&nbsp;spherical&nbsp;cameras:&nbsp;This&nbsp;program&nbsp;is&nbsp;to&nbsp;control&nbsp;a&nbsp;THETA&nbsp;using&nbsp;Ubuntu<br>
+License&nbsp;is&nbsp;GPL3</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="gphoto2.html">gphoto2</a><br>
+<a href="logging.html">logging</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="six.html">six</a><br>
+<a href="subprocess.html">subprocess</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="threading.html">threading</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="urllib.html">urllib</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pytheta.html#no_xtp_dev">no_xtp_dev</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="no_xtp_dev">class <strong>no_xtp_dev</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>JP:&nbsp;xTPデバイスが何もないことを示すエラー<br>
+EN:&nbsp;Error&nbsp;indicating&nbsp;that&nbsp;there&nbsp;are&nbsp;no&nbsp;xTP&nbsp;devices<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pytheta.html#no_xtp_dev">no_xtp_dev</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="no_xtp_dev-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="no_xtp_dev-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#no_xtp_dev-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="no_xtp_dev-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="no_xtp_dev-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="no_xtp_dev-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="no_xtp_dev-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="no_xtp_dev-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="no_xtp_dev-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="no_xtp_dev-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#no_xtp_dev-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="no_xtp_dev-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="no_xtp_dev-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-camera_control_util"><strong>camera_control_util</strong></a>(addr)</dt><dd><tt>JP:&nbsp;Python-gPhoto2において<br>
+コマンドを送信するThetaを選択して送信する必要がある関数の<br>
+基本部分をまるっとまとめたユーティリティ。<br>
+EN:&nbsp;A&nbsp;utility&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;basic&nbsp;parts&nbsp;of&nbsp;a&nbsp;function&nbsp;<br>
+that&nbsp;you&nbsp;need&nbsp;in&nbsp;order&nbsp;to&nbsp;select&nbsp;and&nbsp;send&nbsp;to&nbsp;a&nbsp;Theta&nbsp;sending&nbsp;a&nbsp;command&nbsp;in&nbsp;Python-gPhoto2.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;for&nbsp;connected&nbsp;THETA<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+camera&nbsp;:&nbsp;Camera&nbsp;object<br>
+parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object</tt></dd></dl>
+ <dl><dt><a name="-check_if_theta"><strong>check_if_theta</strong></a>(xtp_dev_list)</dt><dd><tt>JP:&nbsp;lsusbを用いて獲得したMTP&nbsp;or&nbsp;PTPデバイスの一覧の中からThetaを抽出する。&nbsp;&nbsp;<br>
+gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。<br>
+EN:&nbsp;Using&nbsp;lsusb,&nbsp;extract&nbsp;Theta&nbsp;from&nbsp;the&nbsp;list&nbsp;of&nbsp;MTP&nbsp;or&nbsp;PTP&nbsp;devices&nbsp;acquired.<br>
+This&nbsp;is&nbsp;the&nbsp;implementation&nbsp;since&nbsp;the&nbsp;recognition&nbsp;function&nbsp;on&nbsp;the&nbsp;gPhoto2&nbsp;side&nbsp;cannot&nbsp;be&nbsp;used&nbsp;while&nbsp;mounted.<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-connect_init"><strong>connect_init</strong></a>()</dt><dd><tt>JP:&nbsp;接続に際して一斉に行う項目をまとめた関数<br>
+EN:&nbsp;A&nbsp;function&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;items&nbsp;to&nbsp;be&nbsp;performed&nbsp;all&nbsp;at&nbsp;once&nbsp;when&nbsp;connecting<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-finish_capture"><strong>finish_capture</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;本体関数inner_finish_captureをマルチスレッドで実行するための関数<br>
+EN:&nbsp;Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_finish_capture&nbsp;in&nbsp;multiple&nbsp;threads<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-get_bat_lv"><strong>get_bat_lv</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。&nbsp;&nbsp;<br>
+ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
+逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
+EN:&nbsp;Outputs&nbsp;as&nbsp;an&nbsp;integer&nbsp;the&nbsp;current&nbsp;battery&nbsp;level&nbsp;of&nbsp;each&nbsp;THETA&nbsp;contained&nbsp;in&nbsp;theta_list<br>
+Whether&nbsp;or&nbsp;not&nbsp;the&nbsp;loop&nbsp;is&nbsp;outside&nbsp;the&nbsp;function&nbsp;depends&nbsp;on&nbsp;future&nbsp;implementation.<br>
+I&nbsp;am&nbsp;doing&nbsp;gp.Camera&nbsp;over&nbsp;and&nbsp;over,&nbsp;but&nbsp;I&nbsp;am&nbsp;wondering&nbsp;if&nbsp;I&nbsp;can&nbsp;do&nbsp;this&nbsp;only&nbsp;once.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-get_files"><strong>get_files</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;カメラからファイルをダウンロードして本体ストレージへ保存する。<br>
+そして、カメラ側ストレージからこれを削除する。<br>
+EN:&nbsp;Download&nbsp;the&nbsp;file&nbsp;from&nbsp;the&nbsp;camera&nbsp;and&nbsp;save&nbsp;it&nbsp;in&nbsp;the&nbsp;main&nbsp;unit&nbsp;storage.<br>
+Then,&nbsp;delete&nbsp;it&nbsp;from&nbsp;&nbsp;storage&nbsp;on&nbsp;the&nbsp;camera&nbsp;side.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-get_rem_time_v"><strong>get_rem_time_v</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;ストレージ容量に起因する残時間の表示[second]<br>
+EN:&nbsp;Display&nbsp;of&nbsp;remaining&nbsp;time&nbsp;due&nbsp;to&nbsp;storage&nbsp;capacity&nbsp;[in&nbsp;seconds]<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+result_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;実行結果のリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;execution&nbsp;results</tt></dd></dl>
+ <dl><dt><a name="-get_serial"><strong>get_serial</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;theta_listに含まれる各Thetaのシリアル番号を出力する。&nbsp;&nbsp;<br>
+ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
+逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
+EN:&nbsp;Output&nbsp;the&nbsp;serial&nbsp;number&nbsp;of&nbsp;each&nbsp;Theta&nbsp;included&nbsp;in&nbsp;theta_list.<br>
+Whether&nbsp;or&nbsp;not&nbsp;the&nbsp;loop&nbsp;is&nbsp;outside&nbsp;the&nbsp;function&nbsp;depends&nbsp;on&nbsp;future&nbsp;implementation.<br>
+I&nbsp;am&nbsp;doing&nbsp;gp.Camera&nbsp;over&nbsp;and&nbsp;over,&nbsp;but&nbsp;I&nbsp;am&nbsp;wondering&nbsp;if&nbsp;I&nbsp;can&nbsp;do&nbsp;this&nbsp;only&nbsp;once.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>JP:&nbsp;接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
+xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
+EN:&nbsp;Make&nbsp;a&nbsp;list&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices.<br>
+xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
+&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices</tt></dd></dl>
+ <dl><dt><a name="-inner_finish_capture"><strong>inner_finish_capture</strong></a>(addr)</dt><dd><tt>JP:&nbsp;撮影終了処理を担う実処理部分<br>
+現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用<br>
+EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;shooting&nbsp;end&nbsp;processing<br>
+Currently,&nbsp;the&nbsp;method&nbsp;using&nbsp;Python-gPhoto2&nbsp;is&nbsp;unknown,&nbsp;so&nbsp;CLI-gPhoto2&nbsp;is&nbsp;used&nbsp;instead.<br>
+ <br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETA</tt></dd></dl>
+ <dl><dt><a name="-inner_start_capture"><strong>inner_start_capture</strong></a>(addr)</dt><dd><tt>JP:&nbsp;撮影開始処理を担う実処理部分<br>
+EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;the&nbsp;start&nbsp;of&nbsp;shooting&nbsp;processing<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;the&nbsp;connected&nbsp;THETA</tt></dd></dl>
+ <dl><dt><a name="-select_config_util"><strong>select_config_util</strong></a>(parent_widget, child_name, grandchild_name)</dt><dd><tt>JP:&nbsp;Python-gPhoto2によって諸ステータスを取得する際に<br>
+重複する部分をまるっとまとめたユーティリティ。<br>
+EN:&nbsp;A&nbsp;utility&nbsp;that&nbsp;puts&nbsp;together&nbsp;all&nbsp;the&nbsp;overlapping&nbsp;<br>
+parts&nbsp;when&nbsp;getting&nbsp;various&nbsp;statuses&nbsp;with&nbsp;Python-gPhoto2.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object<br>
+child_name&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;子ウィジェットの名前<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Name&nbsp;of&nbsp;child&nbsp;widget<br>
+grandchild_name&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;孫ウィジェットの名前<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Name&nbsp;of&nbsp;grandchild&nbsp;widget<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+grandchild_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object？<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;孫ウィジェット<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Grandchild&nbsp;widget</tt></dd></dl>
+ <dl><dt><a name="-start_capture"><strong>start_capture</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;本体関数inner_start_captureをマルチスレッドで実行するための関数<br>
+EN:&nbsp;Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_start_capture&nbsp;in&nbsp;multiple&nbsp;threads<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+ <dl><dt><a name="-unmount_theta"><strong>unmount_theta</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;マウントされているThetaをアンマウントする。&nbsp;&nbsp;<br>
+そもそもマウントしないようにすれば良いかもしれないが、&nbsp;&nbsp;<br>
+他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。<br>
+EN:&nbsp;Unmount&nbsp;mounted&nbsp;THETAs.<br>
+Ultimately,&nbsp;it&nbsp;may&nbsp;be&nbsp;better&nbsp;not&nbsp;to&nbsp;mount&nbsp;it,&nbsp;but&nbsp;this&nbsp;implementation&nbsp;was&nbsp;made&nbsp;because&nbsp;<br>
+it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;make&nbsp;settings&nbsp;that&nbsp;allow&nbsp;the&nbsp;master&nbsp;to&nbsp;use&nbsp;other&nbsp;equipment.<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>TIMEOUT</strong> = 10<br>
+<strong>print_function</strong> = _Feature((2, 6, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 65536)</td></tr></table>
+</body></html>
