@@ -106,14 +106,14 @@ def check_if_theta(xtp_dev_list):
 
 		print('[debug] [{}]'.format(res))
 		if re.match(".*RICOH THETA.*",res):
-			print("[debug]シータです")
+			print("[debug] Found THETA camera. [シータです]")
 			theta_list.append(addr)
 
 		else:
-			print("[debug]シータではないです")
+			print("[debug] Did not find THETA camera. [シータではないです]")
 			#pass
 
-	print("[debug] check_if_thetaは正常終了")
+	print("[debug] check_if_theta successfully completed. [は正常終了]")
 	return theta_list
 
 
@@ -141,7 +141,7 @@ def unmount_theta(theta_list):
 			# cmd = "gvfs-mount -u /run/user/1000/gvfs/mtp:host=%5B"+url.quote(addr)+"%5D"
 			# sp.check_output(cmd,shell=True) #JP: こういう書き方もある。EN: Can be written this way, too.
 		else:
-			print("[{:s}]はアンマウント済みです".format(path))
+			print("[{:s}] camera unmount completed [はアンマウント済みです]".format(path))
 
 
 def connect_init():
