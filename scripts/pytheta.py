@@ -165,10 +165,10 @@ def connect_init():
 	xtp_dev_list = get_xtp_dev_list()
 	theta_list = check_if_theta(xtp_dev_list)
 	# I was getting an error with the unmount and commented it out.
-	# unmount_theta(theta_list)
+	unmount_theta(theta_list)
 
-	#for addr in theta_list:
-	#	print('[{:s}]'.format(addr) )
+	for addr in theta_list:
+		print('[{:s}]'.format(addr) )
 
 	return theta_list
 
@@ -197,7 +197,7 @@ def camera_control_util(addr):
 
 	# JP: カメラのポート名でポートを検索(?)
 	# EN: Search for a port by camera port name (?)
- 
+
 	port_info_list = gp.PortInfoList()
 	port_info_list.load()
 
@@ -241,7 +241,7 @@ def select_config_util(parent_widget, child_name, grandchild_name):
 	"""
 	# JP: 設定対象の子ウィジェットを選択
 	# EN: Select the child widget to be set
- 
+	
 	child_widget = parent_widget.get_child_by_name(child_name) 
 
 	# JP: 同 孫ウィジェットを選択
