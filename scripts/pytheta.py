@@ -165,10 +165,10 @@ def connect_init():
 	xtp_dev_list = get_xtp_dev_list()
 	theta_list = check_if_theta(xtp_dev_list)
 	# I was getting an error with the unmount and commented it out.
-	# unmount_theta(theta_list)
+	unmount_theta(theta_list)
 
-	#for addr in theta_list:
-	#	print('[{:s}]'.format(addr) )
+	for addr in theta_list:
+		print('[{:s}]'.format(addr) )
 
 	return theta_list
 
