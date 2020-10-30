@@ -53,7 +53,7 @@ License&nbsp;is&nbsp;GPL3</tt></p>
 <font color="#000000" face="helvetica, arial"><a name="no_xtp_dev">class <strong>no_xtp_dev</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;xTPデバイスが何もないことを示すエラー<br>
+<td colspan=2><tt>JP:&nbsp;xTPデバイスが何もないことを示すエラー<br>
 EN:&nbsp;Error&nbsp;indicating&nbsp;that&nbsp;there&nbsp;are&nbsp;no&nbsp;xTP&nbsp;devices<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
@@ -132,23 +132,23 @@ Returns<br>
 -------<br>
 camera&nbsp;:&nbsp;Camera&nbsp;object<br>
 parent_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object</tt></dd></dl>
- <dl><dt><a name="-check_if_theta"><strong>check_if_theta</strong></a>(xtp_dev_list)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;lsusbを用いて獲得したMTP&nbsp;or&nbsp;PTPデバイスの一覧の中からThetaを抽出する。&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Using&nbsp;lsusb,&nbsp;extract&nbsp;Theta&nbsp;from&nbsp;the&nbsp;list&nbsp;of&nbsp;MTP&nbsp;or&nbsp;PTP&nbsp;devices&nbsp;acquired.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;implementation&nbsp;since&nbsp;the&nbsp;recognition&nbsp;function&nbsp;on&nbsp;the&nbsp;gPhoto2&nbsp;side&nbsp;cannot&nbsp;be&nbsp;used&nbsp;while&nbsp;mounted.<br>
+ <dl><dt><a name="-check_if_theta"><strong>check_if_theta</strong></a>(xtp_dev_list)</dt><dd><tt>JP:&nbsp;lsusbを用いて獲得したMTP&nbsp;or&nbsp;PTPデバイスの一覧の中からThetaを抽出する。&nbsp;&nbsp;<br>
+gPhoto2側の認識機能はマウント状態では使用不能なためこのような実装となった。<br>
+EN:&nbsp;Using&nbsp;lsusb,&nbsp;extract&nbsp;Theta&nbsp;from&nbsp;the&nbsp;list&nbsp;of&nbsp;MTP&nbsp;or&nbsp;PTP&nbsp;devices&nbsp;acquired.<br>
+This&nbsp;is&nbsp;the&nbsp;implementation&nbsp;since&nbsp;the&nbsp;recognition&nbsp;function&nbsp;on&nbsp;the&nbsp;gPhoto2&nbsp;side&nbsp;cannot&nbsp;be&nbsp;used&nbsp;while&nbsp;mounted.<br>
 &nbsp;<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Parameters<br>
-&nbsp;&nbsp;&nbsp;&nbsp;----------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;xtp_dev_lis&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
-EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
+Parameters<br>
+----------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Returns<br>
-&nbsp;&nbsp;&nbsp;&nbsp;-------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+Returns<br>
+-------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
  <dl><dt><a name="-connect_init"><strong>connect_init</strong></a>()</dt><dd><tt>JP:&nbsp;接続に際して一斉に行う項目をまとめた関数<br>
 EN:&nbsp;A&nbsp;function&nbsp;that&nbsp;summarizes&nbsp;the&nbsp;items&nbsp;to&nbsp;be&nbsp;performed&nbsp;all&nbsp;at&nbsp;once&nbsp;when&nbsp;connecting<br>
 &nbsp;<br>
@@ -213,27 +213,27 @@ Parameters<br>
 theta_list&nbsp;:&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
+ <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>JP:&nbsp;接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
+xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
 EN:&nbsp;Make&nbsp;a&nbsp;list&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
+xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
 &nbsp;<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xtp_dev_lis&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices</tt></dd></dl>
- <dl><dt><a name="-inner_finish_capture"><strong>inner_finish_capture</strong></a>(addr)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;撮影終了処理を担う実処理部分<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;shooting&nbsp;end&nbsp;processing<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently,&nbsp;the&nbsp;method&nbsp;using&nbsp;Python-gPhoto2&nbsp;is&nbsp;unknown,&nbsp;so&nbsp;CLI-gPhoto2&nbsp;is&nbsp;used&nbsp;instead.<br>
+Returns<br>
+-------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices</tt></dd></dl>
+ <dl><dt><a name="-inner_finish_capture"><strong>inner_finish_capture</strong></a>(addr)</dt><dd><tt>JP:&nbsp;撮影終了処理を担う実処理部分<br>
+現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用<br>
+EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;shooting&nbsp;end&nbsp;processing<br>
+Currently,&nbsp;the&nbsp;method&nbsp;using&nbsp;Python-gPhoto2&nbsp;is&nbsp;unknown,&nbsp;so&nbsp;CLI-gPhoto2&nbsp;is&nbsp;used&nbsp;instead.<br>
  <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameters<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addr&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETA</tt></dd></dl>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETA</tt></dd></dl>
  <dl><dt><a name="-inner_start_capture"><strong>inner_start_capture</strong></a>(addr)</dt><dd><tt>JP:&nbsp;撮影開始処理を担う実処理部分<br>
 EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;the&nbsp;start&nbsp;of&nbsp;shooting&nbsp;processing<br>
 &nbsp;<br>
