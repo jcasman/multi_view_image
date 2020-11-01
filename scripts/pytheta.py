@@ -15,12 +15,12 @@ Japanese
 
 """
 # pylint: disable=C0111
-# JP: ↑プログラムの説明ドキュメントがないよ!というエラーの防止
-# EN: ↑ Prevention of the error where there is no program description document!
+# ↑ Prevention of the error where there is no program description document
+# ↑プログラムの説明ドキュメントがないよ!というエラーの防止
 
 # pylint: disable=C0321
-# JP: 改行したほうがいいよ！という推奨を無視
-# EN: Ingnoring the suggestion that you should start a new line!
+# Ignoring the suggestion that you should start a new line
+# 改行したほうがいいよ！という推奨を無視
 
 # Trailing whitespace
 # pylint: disable=C0303
