@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 # pylint: disable=C0111
-# JP: ↑プログラムの説明ドキュメントがないよ！というエラーの防止
-# EN: ↑ Prevention of the error where there is no program description document!
+# ↑ Prevention of the error where there is no program description document
+# ↑プログラムの説明ドキュメントがないよ！というエラーの防止
 import time
 import pytheta
 

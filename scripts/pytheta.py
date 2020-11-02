@@ -3,7 +3,7 @@
 
 """
 pytheta is a Python library that interfaces with gphoto2 to control multiple RICOH THETA cameras 
-using Ubuntu. It is distributed under the GPL3 license.  The RICOH THETA must be turned
+using Ubuntu. It is distributed under the GPL3 license. The RICOH THETA must be turned
 on and connected to the computer with a USB cable. 
 
 
@@ -15,12 +15,12 @@ Japanese
 
 """
 # pylint: disable=C0111
-# JP: ↑プログラムの説明ドキュメントがないよ!というエラーの防止
-# EN: ↑ Prevention of the error where there is no program description document!
+# ↑ Prevention of the error where there is no program description document
+# ↑プログラムの説明ドキュメントがないよ!というエラーの防止
 
 # pylint: disable=C0321
-# JP: 改行したほうがいいよ！という推奨を無視
-# EN: Ingnoring the suggestion that you should start a new line!
+# Ignoring the suggestion that you should start a new line
+# 改行したほうがいいよ！という推奨を無視
 
 # Trailing whitespace
 # pylint: disable=C0303
@@ -62,17 +62,24 @@ class no_xtp_dev(Exception):
 
 def get_xtp_dev_list():
 	"""
-		JP: 接続されているxTPデバイスのリストを作成する。  
-		xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
-		EN: Make a list of connected xTP devices.
+		Make a list of connected xTP devices.
 		xTP device is a general term for PTP and MTP devices. (I named it arbitrarily.)
-
 
 		Returns
 		-------
 		xtp_dev_lis : list
-			JP: 接続されているxTPデバイスのリスト
-			EN: List of connected xTP devices
+			List of connected xTP devices
+
+	--------
+	Japanese
+	--------
+		接続されているxTPデバイスのリストを作成する。  
+		xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
+
+		Returns
+		-------
+		xtp_dev_lis : list
+			接続されているxTPデバイスのリスト
 	"""
 	xtp_dev_list = []
 	for name, addr in gp.check_result(gp.gp_camera_autodetect() ):
@@ -140,19 +147,27 @@ def check_if_theta(xtp_dev_list):
 
 def unmount_theta(theta_list):
 	"""
-		JP: マウントされているThetaをアンマウントする。  
-		そもそもマウントしないようにすれば良いかもしれないが、  
-		他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。
-		EN: Unmount mounted THETAs.
-		Ultimately, it may be better not to mount it, but this implementation was made because 
-		it is necessary to make settings that allow the master to use other equipment.
-
+		Unmount mounted THETAs. Ultimately, it may be better not to mount it, 
+		but this implementation was made because it is necessary to make 
+		settings that allow the master to use other equipment.
 
 		Parameters
 		----------
 		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+			List of connected THETAs
+
+	--------
+	Japanese
+	--------
+		マウントされているThetaをアンマウントする。  
+		そもそもマウントしないようにすれば良いかもしれないが、  
+		他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。
+
+		Parameters
+		----------
+		theta_list : list
+			接続されているThetaのリスト
+
 	"""
 	for addr in theta_list:
 		path = "/run/user/1000/gvfs/gphoto2:host=%5B"+url.quote(addr)+"%5D"
@@ -242,7 +257,7 @@ def camera_control_util(addr):
 
 	camera = gp.Camera()
 	# Search for a port by camera port name (?)
-	# JP: カメラのポート名でポートを検索(?)
+	# カメラのポート名でポートを検索(?)
 
 	port_info_list = gp.PortInfoList()
 	port_info_list.load()
@@ -254,8 +269,8 @@ def camera_control_util(addr):
 	try:
 		parent_widget = camera.get_config()
 	except gp.GPhoto2Error:
-		# JP: 念の為例外を立てる処理はそのまま。意味があるかは不明
-		# EN: Just in case, the process of making an exception remains the same. Not sure if it makes sense
+		# Just in case, the process of making an exception remains the same. Not sure if it makes sense
+		# 念の為例外を立てる処理はそのまま。意味があるかは不明
 		raise RuntimeError("Unable to connect to Camera")
 
 	return camera, parent_widget
@@ -277,8 +292,7 @@ def select_config_util(parent_widget, child_name, grandchild_name):
 	Returns
 	-------
 	grandchild_widget : camera widget object？
-		JP: 孫ウィジェット
-		EN: Grandchild widget
+		Grandchild widget
 
 	--------
 	Japanese
@@ -298,13 +312,13 @@ def select_config_util(parent_widget, child_name, grandchild_name):
 	grandchild_widget : camera widget object？
 		孫ウィジェット
 	"""
-	# JP: 設定対象の子ウィジェットを選択
-	# EN: Select the child widget to be set
+	# Select the child widget to be set
+	# 設定対象の子ウィジェットを選択
 	
 	child_widget = parent_widget.get_child_by_name(child_name) 
 
-	# JP: 同 孫ウィジェットを選択
-	# EN: Choosing the same grandchild widget
+	# Choosing the same grandchild widget
+	# 同 孫ウィジェットを選択
 
 	grandchild_widget = child_widget.get_child_by_name(grandchild_name) 
 	return grandchild_widget
@@ -312,21 +326,29 @@ def select_config_util(parent_widget, child_name, grandchild_name):
 
 def inner_start_capture(addr):
 	"""
-		JP: 撮影開始処理を担う実処理部分
-		EN: Actual processing part responsible for the start of shooting processing
+	Actual processing part responsible for the start of shooting processing
 
-		Parameters
-		----------
-		addr : char
-			JP: 接続されているThetaのID
-			EN: ID of the connected THETA
+	Parameters
+	----------
+	addr : char
+		ID of the connected THETA
+
+	--------
+	Japanese
+	--------
+	撮影開始処理を担う実処理部分
+
+	Parameters
+	----------
+	addr : char
+		接続されているThetaのID
 	"""
 
-	# JP: 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
-	# EN: Outputs the camera object and parent widget that have been set to be executed
+	# Outputs the camera object and parent widget that have been set to be executed
+	# 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
 	camera, camera_config = camera_control_util(addr)
-	# JP: 孫ウィジェットの取得
-	# EN: Selecting the grandchild widget
+	# Selecting the grandchild widget
+	# 孫ウィジェットの取得
 	movie = select_config_util(camera_config, 'actions', "movie")
 	
 	movie.set_value(1) # JP:値を指定 EN: Specify a value.  
@@ -337,14 +359,22 @@ def inner_start_capture(addr):
 
 def start_capture(theta_list):
 	"""
-		JP: 本体関数inner_start_captureをマルチスレッドで実行するための関数
-		EN: Function for executing the body function inner_start_capture in multiple threads
+	Function for executing the body function inner_start_capture in multiple threads.
 
-		Parameters
-		----------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	Parameters
+	----------
+	theta_list : list
+		List of connected THETAs
+
+	--------
+	Japanese
+	--------
+	本体関数inner_start_captureをマルチスレッドで実行するための関数
+
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
 	"""
 	threads = []
 	for addr in theta_list:
@@ -360,25 +390,33 @@ def start_capture(theta_list):
 
 def inner_finish_capture(addr):
 	"""
-	JP: 撮影終了処理を担う実処理部分
-	現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用
-	EN: Actual processing part responsible for shooting end processing
+	Actual processing part responsible for shooting end processing
 	Currently, the method using Python-gPhoto2 is unknown, so CLI-gPhoto2 is used instead.
+
+	Parameters
+	----------
+	addr : char
+		ID of connected THETA
+
+	--------
+	Japanese
+	--------
+	撮影終了処理を担う実処理部分
+	現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用
 	 
 	Parameters
 	----------
 	addr : char
-		JP: 接続されているThetaのID
-		EN: ID of connected THETA
+		接続されているThetaのID
 	"""
 
-	# JP: 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
-	# EN: Outputs the camera object and parent widget that have been set to be executed
+	# Outputs the camera object and parent widget that have been set to be executed
+	# 実行対象設定済みのカメラオブジェクトと親ウィジェットを出力
 	camera, camera_config = camera_control_util(addr)
-	# JP: 孫ウィジェットを取得して"."以下で値を指定
-	# EN: Get the grandchild widget and specifues the value under "."
+	# Get the grandchild widget and specifues the value under "."
+	# 孫ウィジェットを取得して"."以下で値を指定
 	select_config_util(camera_config, 'actions', "opcode").set_value("0x1018,0xFFFFFFFF")
-	camera.set_config(camera_config) # JP: 値を適応  EN: Set value
+	camera.set_config(camera_config) # Set value  値を適応
 
 	camera.exit()
 
@@ -417,18 +455,26 @@ def finish_capture(theta_list):
 
 def get_serial(theta_list):
 	"""
-		JP: theta_listに含まれる各Thetaのシリアル番号を出力する。  
-		ループを関数外部にするか、否かは今後の実装次第。  
-		逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
-		EN: Output the serial number of each Theta included in theta_list.
-		Whether or not the loop is outside the function depends on future implementation.
-		I am doing gp.Camera over and over, but I am wondering if I can do this only once.
+	Output the serial number of each Theta included in theta_list.
+	Whether or not the loop is outside the function depends on future implementation.
+	I am doing gp.Camera over and over, but I am wondering if I can do this only once.
 
-		Parameters
-		----------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	Parameters
+	----------
+	theta_list : list
+		List of connected THETAs
+
+	--------
+	Japanese
+	--------
+	theta_listに含まれる各Thetaのシリアル番号を出力する。  
+	ループを関数外部にするか、否かは今後の実装次第。  
+	逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
+
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
 	"""
 
 	for addr in theta_list:
@@ -441,18 +487,26 @@ def get_serial(theta_list):
 
 def get_bat_lv(theta_list):
 	"""
-		JP: theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。  
-		ループを関数外部にするか、否かは今後の実装次第。  
-		逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
-		EN: Outputs as an integer the current battery level of each THETA contained in theta_list
-		Whether or not the loop is outside the function depends on future implementation.
-		I am doing gp.Camera over and over, but I am wondering if I can do this only once.
+	Outputs as an integer the current battery level of each THETA contained in theta_list
+	Whether or not the loop is outside the function depends on future implementation.
+	I am doing gp.Camera over and over, but I am wondering if I can do this only once.
 
-		Parameters
-		----------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	Parameters
+	----------
+	theta_list : list
+		List of connected THETAs
+
+	--------
+	Japanese
+	--------
+	theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。  
+	ループを関数外部にするか、否かは今後の実装次第。  
+	逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。
+
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
 	"""
 	result_list = []
 	for addr in theta_list:
@@ -466,29 +520,40 @@ def get_bat_lv(theta_list):
 
 def get_rem_time_v(theta_list):
 	"""
-		JP: ストレージ容量に起因する残時間の表示[second]
-		EN: Display of remaining time due to storage capacity [in seconds]
+	Display of remaining time due to storage capacity [in seconds]
 
-		Parameters
-		----------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	Parameters
+	----------
+	theta_list : list
+		List of connected THETAs
 
-		Returns
-		-------
-		result_list : list
-			JP: 実行結果のリスト
-			EN: List of execution results
+	Returns
+	-------
+	result_list : list
+		List of execution results
 
+	--------
+	Japanese
+	--------
+	ストレージ容量に起因する残時間の表示[second]
+
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
+
+	Returns
+	-------
+	result_list : list
+		実行結果のリスト
 	"""
 	"""　
-		# JP: デバイスプロパティコード：0xD80D RemainingVideos
-		# JP:（ベンダー拡張プロパティ）
-		# JP: 詳細：https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
-		# EN: Device Property Code: 0xD80D RemainingVideos
-		# EN: Vendor Extension Properties
-		# EN: Details: https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
+		# Device Property Code: 0xD80D RemainingVideos
+		# Vendor Extension Properties
+		# Details: https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
+		# デバイスプロパティコード：0xD80D RemainingVideos
+		# （ベンダー拡張プロパティ）
+		# 詳細：https://api.ricoh/docs/theta-usb-api/property/remaining_videos/
 	"""
 
 	result_list = []
@@ -501,22 +566,30 @@ def get_rem_time_v(theta_list):
 
 def get_files(theta_list):
 	"""
-		JP: カメラからファイルをダウンロードして本体ストレージへ保存する。
-		そして、カメラ側ストレージからこれを削除する。
-		EN: Download the file from the camera and save it in the main unit storage.
-		Then, delete it from  storage on the camera side.
+	Download the file from the camera and save it in the main unit storage.
+	Then, delete it from  storage on the camera side.
 
-		Parameters
-		----------
-		theta_list : list
-			JP: 接続されているThetaのリスト
-			EN: List of connected THETAs
+	Parameters
+	----------
+	theta_list : list
+		List of connected THETAs
+
+	--------
+	Japanese
+	--------
+	カメラからファイルをダウンロードして本体ストレージへ保存する。
+	そして、カメラ側ストレージからこれを削除する。
+
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
 	"""
-	# JP: 保存先 親ディレクトリ
-	# EN: Destination parent directory
+	# Destination parent directory
+	# 保存先 親ディレクトリ
 	PHOTO_DIR = os.path.expanduser('~/Pictures/from_camera')
-	# JP: 保存先 小ディレクトリ
-	# EN: Save destination sub directory
+	# Save destination sub directory
+	# 保存先 小ディレクトリ
 	PHOTO_SUB_DIR = '%Y/%Y_%m_%d/'
 
 	threads = []
@@ -538,8 +611,8 @@ def get_files(theta_list):
 
 def _unittest():
 	"""
-		JP: テスト
-		EN: Test
+	Test
+	テスト
 	"""
 
 	theta_list = connect_init()
