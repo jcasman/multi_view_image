@@ -440,6 +440,7 @@ def finish_capture(theta_list):
 	addr : char
 		接続されているThetaのID
 	"""
+	
 	threads = []
 	for addr in theta_list:
 		threads.append(
