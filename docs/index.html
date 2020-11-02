@@ -11,7 +11,7 @@
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/craig/Documents/Development/multi_view_image_modified/scripts/pytheta.py">/home/craig/Documents/Development/multi_view_image_modified/scripts/pytheta.py</a></font></td></tr></table>
     <p><tt>pytheta&nbsp;is&nbsp;a&nbsp;Python&nbsp;library&nbsp;that&nbsp;interfaces&nbsp;with&nbsp;gphoto2&nbsp;to&nbsp;control&nbsp;multiple&nbsp;RICOH&nbsp;THETA&nbsp;cameras&nbsp;<br>
-using&nbsp;Ubuntu.&nbsp;It&nbsp;is&nbsp;distributed&nbsp;under&nbsp;the&nbsp;GPL3&nbsp;license.&nbsp;&nbsp;The&nbsp;RICOH&nbsp;THETA&nbsp;must&nbsp;be&nbsp;turned<br>
+using&nbsp;Ubuntu.&nbsp;It&nbsp;is&nbsp;distributed&nbsp;under&nbsp;the&nbsp;GPL3&nbsp;license.&nbsp;The&nbsp;RICOH&nbsp;THETA&nbsp;must&nbsp;be&nbsp;turned<br>
 on&nbsp;and&nbsp;connected&nbsp;to&nbsp;the&nbsp;computer&nbsp;with&nbsp;a&nbsp;USB&nbsp;cable.&nbsp;<br>
 &nbsp;<br>
 &nbsp;<br>
@@ -217,83 +217,142 @@ Parameters<br>
 ----------<br>
 addr&nbsp;:&nbsp;char<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのID</tt></dd></dl>
- <dl><dt><a name="-get_bat_lv"><strong>get_bat_lv</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。&nbsp;&nbsp;<br>
-ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
-逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
-EN:&nbsp;Outputs&nbsp;as&nbsp;an&nbsp;integer&nbsp;the&nbsp;current&nbsp;battery&nbsp;level&nbsp;of&nbsp;each&nbsp;THETA&nbsp;contained&nbsp;in&nbsp;theta_list<br>
+ <dl><dt><a name="-get_bat_lv"><strong>get_bat_lv</strong></a>(theta_list)</dt><dd><tt>Outputs&nbsp;as&nbsp;an&nbsp;integer&nbsp;the&nbsp;current&nbsp;battery&nbsp;level&nbsp;of&nbsp;each&nbsp;THETA&nbsp;contained&nbsp;in&nbsp;theta_list<br>
 Whether&nbsp;or&nbsp;not&nbsp;the&nbsp;loop&nbsp;is&nbsp;outside&nbsp;the&nbsp;function&nbsp;depends&nbsp;on&nbsp;future&nbsp;implementation.<br>
 I&nbsp;am&nbsp;doing&nbsp;gp.Camera&nbsp;over&nbsp;and&nbsp;over,&nbsp;but&nbsp;I&nbsp;am&nbsp;wondering&nbsp;if&nbsp;I&nbsp;can&nbsp;do&nbsp;this&nbsp;only&nbsp;once.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-get_files"><strong>get_files</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;カメラからファイルをダウンロードして本体ストレージへ保存する。<br>
-そして、カメラ側ストレージからこれを削除する。<br>
-EN:&nbsp;Download&nbsp;the&nbsp;file&nbsp;from&nbsp;the&nbsp;camera&nbsp;and&nbsp;save&nbsp;it&nbsp;in&nbsp;the&nbsp;main&nbsp;unit&nbsp;storage.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+theta_listに含まれる各Thetaの現在のバッテリーレベルを整数で出力する。&nbsp;&nbsp;<br>
+ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
+逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+ <dl><dt><a name="-get_files"><strong>get_files</strong></a>(theta_list)</dt><dd><tt>Download&nbsp;the&nbsp;file&nbsp;from&nbsp;the&nbsp;camera&nbsp;and&nbsp;save&nbsp;it&nbsp;in&nbsp;the&nbsp;main&nbsp;unit&nbsp;storage.<br>
 Then,&nbsp;delete&nbsp;it&nbsp;from&nbsp;&nbsp;storage&nbsp;on&nbsp;the&nbsp;camera&nbsp;side.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-get_rem_time_v"><strong>get_rem_time_v</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;ストレージ容量に起因する残時間の表示[second]<br>
-EN:&nbsp;Display&nbsp;of&nbsp;remaining&nbsp;time&nbsp;due&nbsp;to&nbsp;storage&nbsp;capacity&nbsp;[in&nbsp;seconds]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+カメラからファイルをダウンロードして本体ストレージへ保存する。<br>
+そして、カメラ側ストレージからこれを削除する。<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+ <dl><dt><a name="-get_rem_time_v"><strong>get_rem_time_v</strong></a>(theta_list)</dt><dd><tt>Display&nbsp;of&nbsp;remaining&nbsp;time&nbsp;due&nbsp;to&nbsp;storage&nbsp;capacity&nbsp;[in&nbsp;seconds]<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
 &nbsp;<br>
 Returns<br>
 -------<br>
 result_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;実行結果のリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;execution&nbsp;results</tt></dd></dl>
- <dl><dt><a name="-get_serial"><strong>get_serial</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;theta_listに含まれる各Thetaのシリアル番号を出力する。&nbsp;&nbsp;<br>
-ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
-逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
-EN:&nbsp;Output&nbsp;the&nbsp;serial&nbsp;number&nbsp;of&nbsp;each&nbsp;Theta&nbsp;included&nbsp;in&nbsp;theta_list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;execution&nbsp;results<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+ストレージ容量に起因する残時間の表示[second]<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+result_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実行結果のリスト</tt></dd></dl>
+ <dl><dt><a name="-get_serial"><strong>get_serial</strong></a>(theta_list)</dt><dd><tt>Output&nbsp;the&nbsp;serial&nbsp;number&nbsp;of&nbsp;each&nbsp;Theta&nbsp;included&nbsp;in&nbsp;theta_list.<br>
 Whether&nbsp;or&nbsp;not&nbsp;the&nbsp;loop&nbsp;is&nbsp;outside&nbsp;the&nbsp;function&nbsp;depends&nbsp;on&nbsp;future&nbsp;implementation.<br>
 I&nbsp;am&nbsp;doing&nbsp;gp.Camera&nbsp;over&nbsp;and&nbsp;over,&nbsp;but&nbsp;I&nbsp;am&nbsp;wondering&nbsp;if&nbsp;I&nbsp;can&nbsp;do&nbsp;this&nbsp;only&nbsp;once.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>JP:&nbsp;接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
-xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
-EN:&nbsp;Make&nbsp;a&nbsp;list&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices.<br>
-xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
 &nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+theta_listに含まれる各Thetaのシリアル番号を出力する。&nbsp;&nbsp;<br>
+ループを関数外部にするか、否かは今後の実装次第。&nbsp;&nbsp;<br>
+逐一gp.Cameraを行っているが、これを一回やるでだけにできないか考えている。<br>
 &nbsp;<br>
-Returns<br>
--------<br>
-xtp_dev_lis&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているxTPデバイスのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices</tt></dd></dl>
- <dl><dt><a name="-inner_finish_capture"><strong>inner_finish_capture</strong></a>(addr)</dt><dd><tt>JP:&nbsp;撮影終了処理を担う実処理部分<br>
-現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用<br>
-EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;shooting&nbsp;end&nbsp;processing<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+ <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make&nbsp;a&nbsp;list&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているxTPデバイスのリスト</tt></dd></dl>
+ <dl><dt><a name="-inner_finish_capture"><strong>inner_finish_capture</strong></a>(addr)</dt><dd><tt>Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;shooting&nbsp;end&nbsp;processing<br>
 Currently,&nbsp;the&nbsp;method&nbsp;using&nbsp;Python-gPhoto2&nbsp;is&nbsp;unknown,&nbsp;so&nbsp;CLI-gPhoto2&nbsp;is&nbsp;used&nbsp;instead.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETA<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+撮影終了処理を担う実処理部分<br>
+現状Python-gPhoto2による方法が不明なため、CLI-gPhoto2で代用<br>
  <br>
 Parameters<br>
 ----------<br>
 addr&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETA</tt></dd></dl>
- <dl><dt><a name="-inner_start_capture"><strong>inner_start_capture</strong></a>(addr)</dt><dd><tt>JP:&nbsp;撮影開始処理を担う実処理部分<br>
-EN:&nbsp;Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;the&nbsp;start&nbsp;of&nbsp;shooting&nbsp;processing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのID</tt></dd></dl>
+ <dl><dt><a name="-inner_start_capture"><strong>inner_start_capture</strong></a>(addr)</dt><dd><tt>Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;the&nbsp;start&nbsp;of&nbsp;shooting&nbsp;processing<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 addr&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのID<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;the&nbsp;connected&nbsp;THETA</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;of&nbsp;the&nbsp;connected&nbsp;THETA<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+撮影開始処理を担う実処理部分<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+addr&nbsp;:&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのID</tt></dd></dl>
  <dl><dt><a name="-select_config_util"><strong>select_config_util</strong></a>(parent_widget, child_name, grandchild_name)</dt><dd><tt>A&nbsp;utility&nbsp;that&nbsp;puts&nbsp;together&nbsp;all&nbsp;the&nbsp;overlapping&nbsp;<br>
 parts&nbsp;when&nbsp;getting&nbsp;various&nbsp;statuses&nbsp;with&nbsp;Python-gPhoto2.<br>
 &nbsp;<br>
@@ -308,8 +367,7 @@ grandchild_name&nbsp;:&nbsp;char<br>
 Returns<br>
 -------<br>
 grandchild_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object？<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;孫ウィジェット<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;Grandchild&nbsp;widget<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grandchild&nbsp;widget<br>
 &nbsp;<br>
 --------<br>
 Japanese<br>
@@ -328,27 +386,42 @@ Returns<br>
 -------<br>
 grandchild_widget&nbsp;:&nbsp;camera&nbsp;widget&nbsp;object？<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孫ウィジェット</tt></dd></dl>
- <dl><dt><a name="-start_capture"><strong>start_capture</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;本体関数inner_start_captureをマルチスレッドで実行するための関数<br>
-EN:&nbsp;Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_start_capture&nbsp;in&nbsp;multiple&nbsp;threads<br>
+ <dl><dt><a name="-start_capture"><strong>start_capture</strong></a>(theta_list)</dt><dd><tt>Function&nbsp;for&nbsp;executing&nbsp;the&nbsp;body&nbsp;function&nbsp;inner_start_capture&nbsp;in&nbsp;multiple&nbsp;threads.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
- <dl><dt><a name="-unmount_theta"><strong>unmount_theta</strong></a>(theta_list)</dt><dd><tt>JP:&nbsp;マウントされているThetaをアンマウントする。&nbsp;&nbsp;<br>
-そもそもマウントしないようにすれば良いかもしれないが、&nbsp;&nbsp;<br>
-他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。<br>
-EN:&nbsp;Unmount&nbsp;mounted&nbsp;THETAs.<br>
-Ultimately,&nbsp;it&nbsp;may&nbsp;be&nbsp;better&nbsp;not&nbsp;to&nbsp;mount&nbsp;it,&nbsp;but&nbsp;this&nbsp;implementation&nbsp;was&nbsp;made&nbsp;because&nbsp;<br>
-it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;make&nbsp;settings&nbsp;that&nbsp;allow&nbsp;the&nbsp;master&nbsp;to&nbsp;use&nbsp;other&nbsp;equipment.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
 &nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+本体関数inner_start_captureをマルチスレッドで実行するための関数<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP:&nbsp;接続されているThetaのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+ <dl><dt><a name="-unmount_theta"><strong>unmount_theta</strong></a>(theta_list)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unmount&nbsp;mounted&nbsp;THETAs.&nbsp;Ultimately,&nbsp;it&nbsp;may&nbsp;be&nbsp;better&nbsp;not&nbsp;to&nbsp;mount&nbsp;it,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;this&nbsp;implementation&nbsp;was&nbsp;made&nbsp;because&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;make&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;settings&nbsp;that&nbsp;allow&nbsp;the&nbsp;master&nbsp;to&nbsp;use&nbsp;other&nbsp;equipment.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;<br>
+--------<br>
+Japanese<br>
+--------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウントされているThetaをアンマウントする。&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そもそもマウントしないようにすれば良いかもしれないが、&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
