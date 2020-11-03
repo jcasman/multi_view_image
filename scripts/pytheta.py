@@ -62,24 +62,24 @@ class no_xtp_dev(Exception):
 
 def get_xtp_dev_list():
 	"""
-		Make a list of connected xTP devices.
-		xTP device is a general term for PTP and MTP devices. (I named it arbitrarily.)
+	Make a list of connected xTP devices.
+	xTP device is a general term for PTP and MTP devices. (I named it arbitrarily.)
 
-		Returns
-		-------
-		xtp_dev_lis : list
-			List of connected xTP devices
+	Returns
+	-------
+	xtp_dev_lis : list
+		List of connected xTP devices
 
 	--------
 	Japanese
 	--------
-		接続されているxTPデバイスのリストを作成する。  
-		xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
+	接続されているxTPデバイスのリストを作成する。  
+	xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)
 
-		Returns
-		-------
-		xtp_dev_lis : list
-			接続されているxTPデバイスのリスト
+	Returns
+	-------
+	xtp_dev_lis : list
+		接続されているxTPデバイスのリスト
 	"""
 	xtp_dev_list = []
 	for name, addr in gp.check_result(gp.gp_camera_autodetect() ):
@@ -147,26 +147,26 @@ def check_if_theta(xtp_dev_list):
 
 def unmount_theta(theta_list):
 	"""
-		Unmount mounted THETAs. Ultimately, it may be better not to mount it, 
-		but this implementation was made because it is necessary to make 
-		settings that allow the master to use other equipment.
+	Unmount mounted THETAs. Ultimately, it may be better not to mount it, 
+	but this implementation was made because it is necessary to make 
+	settings that allow the master to use other equipment.
 
-		Parameters
-		----------
-		theta_list : list
-			List of connected THETAs
+	Parameters
+	----------
+	theta_list : list
+		List of connected THETAs
 
 	--------
 	Japanese
 	--------
-		マウントされているThetaをアンマウントする。  
-		そもそもマウントしないようにすれば良いかもしれないが、  
-		他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。
+	マウントされているThetaをアンマウントする。  
+	そもそもマウントしないようにすれば良いかもしれないが、  
+	他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。
 
-		Parameters
-		----------
-		theta_list : list
-			接続されているThetaのリスト
+	Parameters
+	----------
+	theta_list : list
+		接続されているThetaのリスト
 
 	"""
 	for addr in theta_list:
@@ -428,7 +428,7 @@ def finish_capture(theta_list):
 	Parameters
 	----------
 	addr : char
-		EN: ID of connected THETAs
+		ID of connected THETAs
 
 	--------
 	Japanese
