@@ -206,7 +206,7 @@ theta_list&nbsp;:&nbsp;list<br>
 Parameters<br>
 ----------<br>
 addr&nbsp;:&nbsp;char<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN:&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;of&nbsp;connected&nbsp;THETAs<br>
 &nbsp;<br>
 --------<br>
 Japanese<br>
@@ -301,24 +301,24 @@ Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
- <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make&nbsp;a&nbsp;list&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
+ <dl><dt><a name="-get_xtp_dev_list"><strong>get_xtp_dev_list</strong></a>()</dt><dd><tt>Make&nbsp;a&nbsp;list&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices.<br>
+xTP&nbsp;device&nbsp;is&nbsp;a&nbsp;general&nbsp;term&nbsp;for&nbsp;PTP&nbsp;and&nbsp;MTP&nbsp;devices.&nbsp;(I&nbsp;named&nbsp;it&nbsp;arbitrarily.)<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xtp_dev_lis&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
+Returns<br>
+-------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;xTP&nbsp;devices<br>
 &nbsp;<br>
 --------<br>
 Japanese<br>
 --------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
+接続されているxTPデバイスのリストを作成する。&nbsp;&nbsp;<br>
+xTPデバイスとは、PTP、MTPデバイスの総称である。(勝手に名付けた。)<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xtp_dev_lis&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているxTPデバイスのリスト</tt></dd></dl>
+Returns<br>
+-------<br>
+xtp_dev_lis&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているxTPデバイスのリスト</tt></dd></dl>
  <dl><dt><a name="-inner_finish_capture"><strong>inner_finish_capture</strong></a>(addr)</dt><dd><tt>Actual&nbsp;processing&nbsp;part&nbsp;responsible&nbsp;for&nbsp;shooting&nbsp;end&nbsp;processing<br>
 Currently,&nbsp;the&nbsp;method&nbsp;using&nbsp;Python-gPhoto2&nbsp;is&nbsp;unknown,&nbsp;so&nbsp;CLI-gPhoto2&nbsp;is&nbsp;used&nbsp;instead.<br>
 &nbsp;<br>
@@ -402,26 +402,26 @@ Parameters<br>
 ----------<br>
 theta_list&nbsp;:&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
- <dl><dt><a name="-unmount_theta"><strong>unmount_theta</strong></a>(theta_list)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unmount&nbsp;mounted&nbsp;THETAs.&nbsp;Ultimately,&nbsp;it&nbsp;may&nbsp;be&nbsp;better&nbsp;not&nbsp;to&nbsp;mount&nbsp;it,&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;this&nbsp;implementation&nbsp;was&nbsp;made&nbsp;because&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;make&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;settings&nbsp;that&nbsp;allow&nbsp;the&nbsp;master&nbsp;to&nbsp;use&nbsp;other&nbsp;equipment.<br>
+ <dl><dt><a name="-unmount_theta"><strong>unmount_theta</strong></a>(theta_list)</dt><dd><tt>Unmount&nbsp;mounted&nbsp;THETAs.&nbsp;Ultimately,&nbsp;it&nbsp;may&nbsp;be&nbsp;better&nbsp;not&nbsp;to&nbsp;mount&nbsp;it,&nbsp;<br>
+but&nbsp;this&nbsp;implementation&nbsp;was&nbsp;made&nbsp;because&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;make&nbsp;<br>
+settings&nbsp;that&nbsp;allow&nbsp;the&nbsp;master&nbsp;to&nbsp;use&nbsp;other&nbsp;equipment.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameters<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;connected&nbsp;THETAs<br>
 &nbsp;<br>
 --------<br>
 Japanese<br>
 --------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウントされているThetaをアンマウントする。&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そもそもマウントしないようにすれば良いかもしれないが、&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。<br>
+マウントされているThetaをアンマウントする。&nbsp;&nbsp;<br>
+そもそもマウントしないようにすれば良いかもしれないが、&nbsp;&nbsp;<br>
+他の機材の使用に師匠が出うる設定が必要なのでこの実装となった。<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameters<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theta_list&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
+Parameters<br>
+----------<br>
+theta_list&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接続されているThetaのリスト</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
